@@ -1,13 +1,13 @@
-package com.smdev.example.guice.injector;
+package com.smdev.guice.msg;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import com.smdev.example.guice.services.BackupService;
-import com.smdev.example.guice.services.MessageService;
-import com.smdev.example.guice.services.impl.FileSystemBackupService;
-import com.smdev.example.guice.services.impl.MailService;
+import com.smdev.guice.msg.services.BackupService;
+import com.smdev.guice.msg.services.MessageService;
+import com.smdev.guice.msg.services.impl.FileSystemBackupService;
+import com.smdev.guice.msg.services.impl.MailService;
 
-public class AppInjector extends AbstractModule {
+public class MessageApplicationInjector extends AbstractModule {
 
 	@Override
 	protected void configure() {

@@ -1,34 +1,33 @@
-package com.smdev.example.guice.consumer;
+package com.smdev.guice.msg;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.smdev.example.guice.domain.AppException;
-import com.smdev.example.guice.domain.Message;
-import com.smdev.example.guice.services.BackupService;
-import com.smdev.example.guice.services.MessageService;
+import com.smdev.guice.msg.domain.AppException;
+import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.services.BackupService;
+import com.smdev.guice.msg.services.MessageService;
 
+/**
+ * Simple application for sending messages
+ * 
+ * @author Ireth
+ */
 public class MessageApplication {
 
-	/**
-	 * Message backup service
-	 */
+	/** Message backup service */
 	private BackupService backupService = null;;
 
-	/**
-	 * Max attempts to try sending the message
-	 */
+	/** Max attempts to try sending the message */
 	@Inject
 	@Named("MAX_RETRY_ATTEMPTS")
 	private Integer MAX_RETRY_ATTEMPTS = null;
 
-	/**
-	 * Message service
-	 */
+	/** Message service */
 	private MessageService messageService;
 
 	/**
-	 * Constructor injection
+	 * Constructor injection example
 	 * 
 	 * @param backupService
 	 */
@@ -39,18 +38,17 @@ public class MessageApplication {
 	}
 
 	/**
-	 * Sending a message
+	 * Sends a message
 	 * 
 	 * @param message
 	 * @return boolean
 	 * @throws AppException
 	 */
 	public boolean sendMessage(Message message) throws AppException {
-		int attempts = 1;
-		boolean sent = false;
-
 		this.backupService.backup(System.currentTimeMillis(), message);
 
+		boolean sent = false;
+		int attempts = 1;
 		sent = this.messageService.sendMessage(message);
 		while (!sent && attempts <= MAX_RETRY_ATTEMPTS) {
 			sent = this.messageService.sendMessage(message);
@@ -61,7 +59,7 @@ public class MessageApplication {
 	}
 
 	/**
-	 * Setter injection
+	 * Setter injection example
 	 * 
 	 * @param service
 	 */

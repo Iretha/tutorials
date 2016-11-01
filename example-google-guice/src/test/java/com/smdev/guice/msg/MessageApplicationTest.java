@@ -1,20 +1,21 @@
-package com.smdev.example.guice.client;
+package com.smdev.guice.msg;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.smdev.example.guice.consumer.MessageApplication;
-import com.smdev.example.guice.domain.AppException;
-import com.smdev.example.guice.domain.Message;
-import com.smdev.example.guice.domain.Referent;
-import com.smdev.example.guice.injector.AppInjector;
+import com.smdev.guice.msg.domain.AppException;
+import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.domain.Referent;
 
-public class ClientApplication {
+public class MessageApplicationTest {
 
-	public static void main(String[] args) {
-		Injector injector = Guice.createInjector(new AppInjector());
+	@Test
+	public void testSendMessage(){
+		Injector injector = Guice.createInjector(new MessageApplicationInjector());
 
 		MessageApplication app = injector.getInstance(MessageApplication.class);
 

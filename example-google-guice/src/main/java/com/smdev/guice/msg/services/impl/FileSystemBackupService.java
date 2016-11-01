@@ -1,7 +1,7 @@
-package com.smdev.example.guice.services.impl;
+package com.smdev.guice.msg.services.impl;
 
-import com.smdev.example.guice.domain.Message;
-import com.smdev.example.guice.services.BackupService;
+import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.services.BackupService;
 
 public class FileSystemBackupService implements BackupService {
 

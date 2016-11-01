@@ -1,4 +1,4 @@
-package com.smdev.example.guice.domain;
+package com.smdev.guice.msg.domain;
 
 public class Referent {
 

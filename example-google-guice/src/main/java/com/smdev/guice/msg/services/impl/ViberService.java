@@ -1,9 +1,9 @@
-package com.smdev.example.guice.services.impl;
+package com.smdev.guice.msg.services.impl;
 
 import javax.inject.Singleton;
 
-import com.smdev.example.guice.domain.Message;
-import com.smdev.example.guice.services.MessageService;
+import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.services.MessageService;
 
 @Singleton
 public class ViberService implements MessageService {

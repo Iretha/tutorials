@@ -1,4 +1,4 @@
-package com.smdev.example.guice.domain;
+package com.smdev.guice.msg.domain;
 
 import java.io.Serializable;
 import java.util.List;
