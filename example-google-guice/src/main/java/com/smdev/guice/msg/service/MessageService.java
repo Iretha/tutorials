@@ -1,4 +1,4 @@
-package com.smdev.guice.msg.services;
+package com.smdev.guice.msg.service;
 
 import com.smdev.guice.msg.domain.Message;
 

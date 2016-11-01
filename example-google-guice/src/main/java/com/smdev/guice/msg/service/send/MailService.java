@@ -1,9 +1,9 @@
-package com.smdev.guice.msg.services.impl;
+package com.smdev.guice.msg.service.send;
 
 import javax.inject.Singleton;
 
 import com.smdev.guice.msg.domain.Message;
-import com.smdev.guice.msg.services.MessageService;
+import com.smdev.guice.msg.service.MessageService;
 
 @Singleton
 public class MailService implements MessageService {

@@ -3,17 +3,17 @@ package com.smdev.guice.msg;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.smdev.guice.msg.domain.AppException;
+import com.smdev.guice.msg.domain.MessageException;
+import com.smdev.guice.msg.service.BackupService;
+import com.smdev.guice.msg.service.MessageService;
 import com.smdev.guice.msg.domain.Message;
-import com.smdev.guice.msg.services.BackupService;
-import com.smdev.guice.msg.services.MessageService;
 
 /**
  * Simple application for sending messages
  * 
  * @author Ireth
  */
-public class MessageApplication {
+public class MessageApp {
 
 	/** Message backup service */
 	private BackupService backupService = null;;
@@ -32,7 +32,7 @@ public class MessageApplication {
 	 * @param backupService
 	 */
 	@Inject
-	public MessageApplication(BackupService backupService) {
+	public MessageApp(BackupService backupService) {
 		super();
 		this.backupService = backupService;
 	}
@@ -42,9 +42,9 @@ public class MessageApplication {
 	 * 
 	 * @param message
 	 * @return boolean
-	 * @throws AppException
+	 * @throws MessageException
 	 */
-	public boolean sendMessage(Message message) throws AppException {
+	public boolean sendMessage(Message message) throws MessageException {
 		this.backupService.backup(System.currentTimeMillis(), message);
 
 		boolean sent = false;

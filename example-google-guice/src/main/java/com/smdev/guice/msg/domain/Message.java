@@ -8,10 +8,10 @@ public class Message implements Serializable {
 	/** */
 	private static final long serialVersionUID = -2068022461960625968L;
 	private String body;
-	private List<Referent> recipients;
-	private Referent sender;
+	private List<MessageReferent> recipients;
+	private MessageReferent sender;
 
-	public Message(List<Referent> recipients, Referent sender, String body) {
+	public Message(List<MessageReferent> recipients, MessageReferent sender, String body) {
 		super();
 		this.recipients = recipients;
 		this.sender = sender;
@@ -22,11 +22,11 @@ public class Message implements Serializable {
 		return body;
 	}
 
-	public List<Referent> getRecipients() {
+	public List<MessageReferent> getRecipients() {
 		return recipients;
 	}
 
-	public Referent getSender() {
+	public MessageReferent getSender() {
 		return sender;
 	}
 

@@ -7,26 +7,26 @@ import org.junit.Test;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.smdev.guice.msg.domain.AppException;
+import com.smdev.guice.msg.domain.MessageException;
 import com.smdev.guice.msg.domain.Message;
-import com.smdev.guice.msg.domain.Referent;
+import com.smdev.guice.msg.domain.MessageReferent;
 
 public class MessageApplicationTest {
 
 	@Test
 	public void testSendMessage(){
-		Injector injector = Guice.createInjector(new MessageApplicationInjector());
+		Injector injector = Guice.createInjector(new MessageAppInjector());
 
-		MessageApplication app = injector.getInstance(MessageApplication.class);
+		MessageApp app = injector.getInstance(MessageApp.class);
 
-		List<Referent> recipients = Arrays.asList(new Referent[] { new Referent("Peter's Address", "Peter"),
-				new Referent("Miller's Address", "Miller") });
+		List<MessageReferent> recipients = Arrays.asList(new MessageReferent[] { new MessageReferent("Peter's Address", "Peter"),
+				new MessageReferent("Miller's Address", "Miller") });
 
-		Referent sender = new Referent("Ivan's Address", "Ivan");
+		MessageReferent sender = new MessageReferent("Ivan's Address", "Ivan");
 		Message message = new Message(recipients, sender, "exmple message");
 		try {
 			app.sendMessage(message);
-		} catch (AppException e) {
+		} catch (MessageException e) {
 			// TODO
 			e.printStackTrace();
 		}

@@ -2,12 +2,12 @@ package com.smdev.guice.msg;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import com.smdev.guice.msg.services.BackupService;
-import com.smdev.guice.msg.services.MessageService;
-import com.smdev.guice.msg.services.impl.FileSystemBackupService;
-import com.smdev.guice.msg.services.impl.MailService;
+import com.smdev.guice.msg.service.BackupService;
+import com.smdev.guice.msg.service.MessageService;
+import com.smdev.guice.msg.service.backup.FileSystemBackupService;
+import com.smdev.guice.msg.service.send.MailService;
 
-public class MessageApplicationInjector extends AbstractModule {
+public class MessageAppInjector extends AbstractModule {
 
 	@Override
 	protected void configure() {
