@@ -19,4 +19,9 @@ public class Referent {
 		return name;
 	}
 
+	@Override
+	public String toString() {
+		return this.name;
+	}
+
 }

@@ -1,9 +1,12 @@
 package com.smdev.example.guice.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Message {
+public class Message implements Serializable {
 
+	/** */
+	private static final long serialVersionUID = -2068022461960625968L;
 	private String body;
 	private List<Referent> recipients;
 	private Referent sender;
@@ -25,6 +28,13 @@ public class Message {
 
 	public Referent getSender() {
 		return sender;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("Msg from ").append(sender.getName()).append(" to ").append(recipients);
+		return str.toString();
 	}
 
 }
