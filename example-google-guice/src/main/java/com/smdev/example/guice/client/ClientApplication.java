@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.smdev.example.guice.consumer.MyApplication;
+import com.smdev.example.guice.consumer.MessageApplication;
 import com.smdev.example.guice.domain.AppException;
 import com.smdev.example.guice.domain.Message;
 import com.smdev.example.guice.domain.Referent;
@@ -16,7 +16,7 @@ public class ClientApplication {
 	public static void main(String[] args) {
 		Injector injector = Guice.createInjector(new AppInjector());
 
-		MyApplication app = injector.getInstance(MyApplication.class);
+		MessageApplication app = injector.getInstance(MessageApplication.class);
 
 		List<Referent> recipients = Arrays.asList(new Referent[] { new Referent("Peter's Address", "Peter"),
 				new Referent("Miller's Address", "Miller") });

@@ -8,7 +8,7 @@ import com.smdev.example.guice.domain.Message;
 import com.smdev.example.guice.services.BackupService;
 import com.smdev.example.guice.services.MessageService;
 
-public class MyApplication {
+public class MessageApplication {
 
 	/**
 	 * Message backup service
@@ -33,7 +33,7 @@ public class MyApplication {
 	 * @param backupService
 	 */
 	@Inject
-	public MyApplication(BackupService backupService) {
+	public MessageApplication(BackupService backupService) {
 		super();
 		this.backupService = backupService;
 	}
