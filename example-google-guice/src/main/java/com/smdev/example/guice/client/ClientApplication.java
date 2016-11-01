@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Key;
-import com.google.inject.name.Names;
 import com.smdev.example.guice.consumer.MyApplication;
 import com.smdev.example.guice.domain.Message;
 import com.smdev.example.guice.domain.Referent;
@@ -27,7 +25,7 @@ public class ClientApplication {
 		try {
 			app.sendMessage(message);
 		} catch (MessageException e) {
-			// TODO Auto-generated catch block
+			// TODO
 			e.printStackTrace();
 		}
 	}
