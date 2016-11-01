@@ -7,11 +7,16 @@ import com.smdev.guice.msg.service.MessageService;
 import com.smdev.guice.msg.service.backup.FileSystemBackupService;
 import com.smdev.guice.msg.service.send.MailService;
 
+/**
+ * Google Guice DI configuration
+ * 
+ * @author Ireth
+ */
 public class MessageAppInjector extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		
+
 		/*
 		 * Linked binding -> maps a type to its implementation
 		 * 

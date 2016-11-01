@@ -1,11 +1,11 @@
 package com.smdev.guice.msg.domain;
 
-public class MessageReferent {
+public class MessageCorrespondent {
 
 	private String address;
 	private String name;
 
-	public MessageReferent(String address, String name) {
+	public MessageCorrespondent(String address, String name) {
 		super();
 		this.address = address;
 		this.name = name;
