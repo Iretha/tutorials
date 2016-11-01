@@ -15,12 +15,14 @@ public class Message implements Serializable {
 	private String body;
 	private List<MessageCorrespondent> recipients;
 	private MessageCorrespondent sender;
+	private long createTime;
 
 	public Message(List<MessageCorrespondent> recipients, MessageCorrespondent sender, String body) {
 		super();
 		this.recipients = recipients;
 		this.sender = sender;
 		this.body = body;
+		this.createTime = System.currentTimeMillis();
 	}
 
 	public String getBody() {
@@ -38,7 +40,7 @@ public class Message implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("Msg from ").append(sender.getName()).append(" to ").append(recipients);
+		str.append(createTime).append(": from ").append(sender.getName()).append(" to ").append(recipients);
 		return str.toString();
 	}
 

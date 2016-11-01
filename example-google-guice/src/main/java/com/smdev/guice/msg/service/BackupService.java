@@ -2,7 +2,17 @@ package com.smdev.guice.msg.service;
 
 import com.smdev.guice.msg.domain.Message;
 
+/**
+ * Service for backuping messages
+ * 
+ * @author Ireth
+ */
 public interface BackupService {
 
-	void backup(long time, Message message);
+	/**
+	 * Backup a message
+	 * 
+	 * @param message
+	 */
+	void backup(Message message);
 }

@@ -45,13 +45,13 @@ public class MessageApp {
 	 * @throws MessageException
 	 */
 	public boolean sendMessage(Message message) throws MessageException {
-		this.backupService.backup(System.currentTimeMillis(), message);
+		this.backupService.backup(message);
 
 		boolean sent = false;
 		int attempts = 1;
-		sent = this.messageService.sendMessage(message);
+		sent = this.messageService.send(message);
 		while (!sent && attempts <= MAX_RETRY_ATTEMPTS) {
-			sent = this.messageService.sendMessage(message);
+			sent = this.messageService.send(message);
 			attempts++;
 		}
 

@@ -1,5 +1,10 @@
 package com.smdev.guice.msg.domain;
 
+/**
+ * A person, who can send or receive messages
+ * 
+ * @author Ireth
+ */
 public class MessageCorrespondent {
 
 	private String address;

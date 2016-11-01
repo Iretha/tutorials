@@ -1,5 +1,10 @@
 package com.smdev.guice.msg.domain;
 
+/**
+ * Exception thrown by the application
+ * 
+ * @author Ireth
+ */
 public class MessageException extends Exception {
 
 	/** */
