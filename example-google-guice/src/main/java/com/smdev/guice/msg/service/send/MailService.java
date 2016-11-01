@@ -15,8 +15,8 @@ public class MailService implements MessageService {
 
 	@Override
 	public boolean send(Message message){
-		// TODO Auto-generated method stub
-		System.out.println("Email Message sent ");
+		// TODO impl me
+		System.out.println("Email Message sent: " + message.getCreateTime());
 		return true;
 	}
 }

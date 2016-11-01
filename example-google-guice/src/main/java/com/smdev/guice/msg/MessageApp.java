@@ -54,7 +54,6 @@ public class MessageApp {
 			sent = this.messageService.send(message);
 			attempts++;
 		}
-
 		return sent;
 	}
 
@@ -67,5 +66,4 @@ public class MessageApp {
 	public void setMessageService(MessageService service) {
 		this.messageService = service;
 	}
-
 }

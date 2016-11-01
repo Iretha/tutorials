@@ -5,12 +5,12 @@ package com.smdev.guice.msg.domain;
  * 
  * @author Ireth
  */
-public class MessageCorrespondent {
+public class Correspondent {
 
 	private String address;
 	private String name;
 
-	public MessageCorrespondent(String address, String name) {
+	public Correspondent(String address, String name) {
 		super();
 		this.address = address;
 		this.name = name;

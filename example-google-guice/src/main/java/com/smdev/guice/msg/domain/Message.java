@@ -13,11 +13,11 @@ public class Message implements Serializable {
 	/** */
 	private static final long serialVersionUID = -2068022461960625968L;
 	private String body;
-	private List<MessageCorrespondent> recipients;
-	private MessageCorrespondent sender;
 	private long createTime;
+	private List<Correspondent> recipients;
+	private Correspondent sender;
 
-	public Message(List<MessageCorrespondent> recipients, MessageCorrespondent sender, String body) {
+	public Message(List<Correspondent> recipients, Correspondent sender, String body) {
 		super();
 		this.recipients = recipients;
 		this.sender = sender;
@@ -29,11 +29,15 @@ public class Message implements Serializable {
 		return body;
 	}
 
-	public List<MessageCorrespondent> getRecipients() {
+	public long getCreateTime() {
+		return createTime;
+	}
+
+	public List<Correspondent> getRecipients() {
 		return recipients;
 	}
 
-	public MessageCorrespondent getSender() {
+	public Correspondent getSender() {
 		return sender;
 	}
 

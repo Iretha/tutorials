@@ -15,7 +15,7 @@ public class ViberService implements MessageService {
 
 	@Override
 	public boolean send(Message message){
-		//TODO
+		// TODO impl me
 		System.out.println("Viber Message sent");
 		return true;
 	}
