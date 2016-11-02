@@ -7,7 +7,7 @@ import com.smdev.guice.msg.domain.user.User;
 import com.smdev.guice.msg.service.MessageService;
 import com.smdev.guice.msg.service.fb.FBMessage;
 import com.smdev.guice.msg.service.fb.FBUser;
-import com.smdev.guice.msg.service.fb.FacebookService;
+import com.smdev.guice.msg.service.fb.FBService;
 
 /**
  * Specific configuration of the Facebook module
@@ -29,7 +29,7 @@ public class ModuleFacebook extends ModuleBase {
 		 * Scopes.SINGLETON ensures that we have only one instance of the type
 		 * for the whole application at a time
 		 */
-		bind(MessageService.class).to(FacebookService.class);
+		bind(MessageService.class).to(FBService.class);
 
 		/*
 		 * Factory for specific facebook object types

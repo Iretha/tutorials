@@ -10,4 +10,5 @@ public class MessageAppException extends Exception {
 	/** */
 	private static final long serialVersionUID = -7744038993937833509L;
 
+	// TODO custom implementation
 }

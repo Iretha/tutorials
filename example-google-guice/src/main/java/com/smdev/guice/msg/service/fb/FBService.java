@@ -8,7 +8,7 @@ import com.smdev.guice.msg.service.MessageService;
  * 
  * @author Ireth
  */
-public class FacebookService implements MessageService {
+public class FBService implements MessageService {
 
 	@Override
 	public boolean send(Message message) {
