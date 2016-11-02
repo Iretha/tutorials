@@ -1,6 +1,7 @@
 package com.smdev.guice.msg;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Scopes;
 import com.google.inject.name.Names;
 import com.smdev.guice.msg.service.BackupService;
 import com.smdev.guice.msg.service.MessageService;
@@ -30,8 +31,11 @@ public class MessageAppInjector extends AbstractModule {
 		 * 
 		 * In this case we will use only one implementation at a time. Linked
 		 * bindings can also be chained.
+		 * 
+		 * Scopes.SINGLETON ensures that we have only one instance of the type
+		 * for the whole application at a time
 		 */
-		bind(MessageService.class).to(MailService.class);
+		bind(MessageService.class).to(MailService.class).in(Scopes.SINGLETON);
 
 		/*
 		 * Instance binding -> binds a type to a specific instance
