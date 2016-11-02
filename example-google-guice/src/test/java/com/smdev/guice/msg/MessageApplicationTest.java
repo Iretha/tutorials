@@ -15,7 +15,7 @@ import com.smdev.guice.msg.domain.Correspondent;
 public class MessageApplicationTest {
 
 	private static Correspondent createCorresp(String name) {
-		return new Correspondent(name + "'s Address", name);
+		return new Correspondent("@"+name , name);
 	}
 
 	private static List<Correspondent> createCorrespList(String... names) {

@@ -7,26 +7,26 @@ package com.smdev.guice.msg.domain;
  */
 public class Correspondent {
 
-	private String address;
 	private String name;
+	private String userName;
 
-	public Correspondent(String address, String name) {
+	public Correspondent(String userName, String name) {
 		super();
-		this.address = address;
+		this.userName = userName;
 		this.name = name;
-	}
-
-	public String getAddress() {
-		return address;
 	}
 
 	public String getName() {
 		return name;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
 	@Override
 	public String toString() {
-		return this.name;
+		return this.userName;
 	}
 
 }

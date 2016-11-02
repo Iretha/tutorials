@@ -44,7 +44,7 @@ public class Message implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append(createTime).append(": from ").append(sender.getName()).append(" to ").append(recipients);
+		str.append(createTime).append(": from ").append(sender.getUserName()).append(" to ").append(recipients);
 		return str.toString();
 	}
 
