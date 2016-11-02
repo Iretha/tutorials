@@ -26,7 +26,7 @@ public interface DomainFactory {
 	 *            - message body
 	 * @return new instance
 	 */
-	Message create(@Assisted("recipients") List<User> recipients, @Assisted("sender") User sender, String body);
+	Message createMessage(@Assisted("recipients") List<User> recipients, @Assisted("sender") User sender, String body);
 
 	/**
 	 * Creates an instance of {@link User}
@@ -37,5 +37,5 @@ public interface DomainFactory {
 	 * @param name
 	 * @return new instance
 	 */
-	User create(@Assisted("userName") String userName, @Assisted("name") String name);
+	User createUser(@Assisted("userName") String userName, @Assisted("name") String name);
 }

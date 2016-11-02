@@ -17,7 +17,7 @@ import com.smdev.guice.msg.config.ModuleMail;
 public class MessageAppTest {
 
 	private static User createUser(DomainFactory factory, String name) {
-		return factory.create("@" + name, name);
+		return factory.createUser("@" + name, name);
 	}
 
 	private static List<User> createUserList(DomainFactory factory, String... names) {
@@ -34,7 +34,7 @@ public class MessageAppTest {
 		MessageApp app = inj.getInstance(MessageApp.class);
 		
 		DomainFactory factory = inj.getInstance(DomainFactory.class);
-		Message msg = factory.create(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "FB message");
+		Message msg = factory.createMessage(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "FB message");
 		try {
 			app.sendMessage(msg);
 		} catch (MessageAppException e) {
@@ -48,7 +48,7 @@ public class MessageAppTest {
 		MessageApp app = inj.getInstance(MessageApp.class);
 
 		DomainFactory factory = inj.getInstance(DomainFactory.class);
-		Message msg = factory.create(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "Mail message");
+		Message msg = factory.createMessage(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "Mail message");
 		try {
 			app.sendMessage(msg);
 		} catch (MessageAppException e) {
