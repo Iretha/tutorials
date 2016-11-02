@@ -1,32 +1,27 @@
-package com.smdev.guice.msg.domain;
+package com.smdev.guice.msg.domain.user;
 
-/**
- * A person, who can send or receive messages
- * 
- * @author Ireth
- */
-public class Correspondent {
-
+public abstract class UserImpl implements User {
 	private String name;
 	private String userName;
 
-	public Correspondent(String userName, String name) {
+	protected UserImpl(String userName, String name) {
 		super();
 		this.userName = userName;
 		this.name = name;
 	}
 
+	@Override
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
+	@Override
 	public String getUserName() {
-		return userName;
+		return this.userName;
 	}
 
 	@Override
 	public String toString() {
 		return this.userName;
 	}
-
 }

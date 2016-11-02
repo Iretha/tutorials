@@ -17,7 +17,7 @@ public class ModuleBase extends AbstractModule {
 		 * method instead.
 		 */
 		bind(Integer.class).annotatedWith(Names.named("MAX_RETRY_ATTEMPTS")).toInstance(10);
-		
+
 		/*
 		 * Linked binding -> maps a type to its implementation
 		 * 

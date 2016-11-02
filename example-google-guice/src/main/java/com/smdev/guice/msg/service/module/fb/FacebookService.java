@@ -1,4 +1,4 @@
-package com.smdev.guice.msg.service.send;
+package com.smdev.guice.msg.service.module.fb;
 
 import com.smdev.guice.msg.domain.Message;
 import com.smdev.guice.msg.service.MessageService;

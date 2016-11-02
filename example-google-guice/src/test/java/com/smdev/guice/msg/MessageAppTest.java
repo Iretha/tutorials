@@ -9,19 +9,21 @@ import org.junit.Test;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.smdev.guice.msg.domain.MessageException;
+import com.smdev.guice.msg.domain.user.User;
+import com.smdev.guice.msg.domain.user.UserFactory;
 import com.smdev.guice.msg.domain.Message;
-import com.smdev.guice.msg.domain.Correspondent;
 
-public class MessageApplicationTest {
+public class MessageAppTest {
 
-	private static Correspondent createCorresp(String name) {
-		return new Correspondent("@" + name, name);
+	private static User createUser(Injector inj, String name) {
+		UserFactory factory = inj.getInstance(UserFactory.class);
+		return factory.createUser("@" + name, name);
 	}
 
-	private static List<Correspondent> createCorrespList(String... names) {
-		List<Correspondent> list = new ArrayList<>();
+	private static List<User> createUserList(Injector inj, String... names) {
+		List<User> list = new ArrayList<>();
 		for (String name : names) {
-			list.add(createCorresp(name));
+			list.add(createUser(inj, name));
 		}
 		return list;
 	}
@@ -32,8 +34,7 @@ public class MessageApplicationTest {
 		MessageApp app = inj.getInstance(MessageApp.class);
 
 		try {
-			app.sendMessage(
-					new Message(createCorrespList("Miller", "Peter"), createCorresp("Ivan"), "FB message"));
+			app.sendMessage(new Message(createUserList(inj, "Miller", "Peter"), createUser(inj, "Ivan"), "FB message"));
 		} catch (MessageException e) {
 			Assert.fail(e.getMessage());
 		}
@@ -45,8 +46,7 @@ public class MessageApplicationTest {
 		MessageApp app = inj.getInstance(MessageApp.class);
 
 		try {
-			app.sendMessage(
-					new Message(createCorrespList("Miller", "Peter"), createCorresp("Ivan"), "Email message"));
+			app.sendMessage(new Message(createUserList(inj, "Miller", "Peter"), createUser(inj, "Ivan"), "Email message"));
 		} catch (MessageException e) {
 			Assert.fail(e.getMessage());
 		}

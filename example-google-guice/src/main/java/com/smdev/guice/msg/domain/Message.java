@@ -3,6 +3,8 @@ package com.smdev.guice.msg.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import com.smdev.guice.msg.domain.user.User;
+
 /**
  * Represents a message that can be exchanged between different correspondents
  * 
@@ -14,10 +16,10 @@ public class Message implements Serializable {
 	private static final long serialVersionUID = -2068022461960625968L;
 	private String body;
 	private long createTime;
-	private List<Correspondent> recipients;
-	private Correspondent sender;
+	private List<User> recipients;
+	private User sender;
 
-	public Message(List<Correspondent> recipients, Correspondent sender, String body) {
+	public Message(List<User> recipients, User sender, String body) {
 		super();
 		this.recipients = recipients;
 		this.sender = sender;
@@ -33,11 +35,11 @@ public class Message implements Serializable {
 		return createTime;
 	}
 
-	public List<Correspondent> getRecipients() {
+	public List<User> getRecipients() {
 		return recipients;
 	}
 
-	public Correspondent getSender() {
+	public User getSender() {
 		return sender;
 	}
 
