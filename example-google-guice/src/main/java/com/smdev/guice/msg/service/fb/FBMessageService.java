@@ -2,7 +2,7 @@ package com.smdev.guice.msg.service.fb;
 
 import javax.inject.Inject;
 import com.smdev.guice.msg.domain.message.Message;
-import com.smdev.guice.msg.service.LogService;
+import com.smdev.guice.msg.service.ActivityService;
 import com.smdev.guice.msg.service.MessageService;
 
 /**
@@ -12,18 +12,14 @@ import com.smdev.guice.msg.service.MessageService;
  */
 public class FBMessageService implements MessageService {
 
-	private LogService logService;
+	@Inject
+	private @FBType ActivityService fbActivity;
 
 	@Override
 	public boolean send(Message message) {
-		this.logService.log("Sending message " + message + "...");
+		this.fbActivity.track("Sending message " + message + "...");
 		// TODO custom implementation
 		return true;
-	}
-
-	@Inject
-	public void setLogService(@FBType LogService logService) {
-		this.logService = logService;
 	}
 
 }

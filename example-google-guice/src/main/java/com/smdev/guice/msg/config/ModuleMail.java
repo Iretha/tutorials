@@ -5,10 +5,10 @@ import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.smdev.guice.msg.domain.DomainFactory;
 import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.domain.user.User;
-import com.smdev.guice.msg.service.LogService;
+import com.smdev.guice.msg.service.ActivityService;
 import com.smdev.guice.msg.service.MessageService;
 import com.smdev.guice.msg.service.mail.MailType;
-import com.smdev.guice.msg.service.mail.MailLogService;
+import com.smdev.guice.msg.service.mail.MailActivityService;
 import com.smdev.guice.msg.service.mail.MailMessage;
 import com.smdev.guice.msg.service.mail.MailMessageService;
 import com.smdev.guice.msg.service.mail.MailUser;
@@ -47,6 +47,6 @@ public class ModuleMail extends ModuleBase {
 		 * Custom annotation type -> maps an annotated type to its
 		 * implementation
 		 */
-		bind(LogService.class).annotatedWith(MailType.class).to(MailLogService.class).in(Scopes.SINGLETON);
+		bind(ActivityService.class).annotatedWith(MailType.class).to(MailActivityService.class).in(Scopes.SINGLETON);
 	}
 }

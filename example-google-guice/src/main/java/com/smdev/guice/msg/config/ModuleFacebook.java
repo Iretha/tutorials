@@ -5,10 +5,10 @@ import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.smdev.guice.msg.domain.DomainFactory;
 import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.domain.user.User;
-import com.smdev.guice.msg.service.LogService;
+import com.smdev.guice.msg.service.ActivityService;
 import com.smdev.guice.msg.service.MessageService;
 import com.smdev.guice.msg.service.fb.FBType;
-import com.smdev.guice.msg.service.fb.FBLogService;
+import com.smdev.guice.msg.service.fb.FBActivityService;
 import com.smdev.guice.msg.service.fb.FBMessage;
 import com.smdev.guice.msg.service.fb.FBUser;
 import com.smdev.guice.msg.service.fb.FBMessageService;
@@ -44,7 +44,7 @@ public class ModuleFacebook extends ModuleBase {
 		 * Custom annotation type -> maps an annotated type to its
 		 * implementation
 		 */
-		bind(LogService.class).annotatedWith(FBType.class).to(FBLogService.class).in(Scopes.SINGLETON);
+		bind(ActivityService.class).annotatedWith(FBType.class).to(FBActivityService.class).in(Scopes.SINGLETON);
 	
 	}
 }
