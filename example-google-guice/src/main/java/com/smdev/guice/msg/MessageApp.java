@@ -65,6 +65,4 @@ public class MessageApp {
 	public void setBackupService(BackupService service) {
 		this.backupService = service;
 	}
-	
-	
 }

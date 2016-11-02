@@ -5,6 +5,11 @@ import com.google.inject.name.Names;
 import com.smdev.guice.msg.service.BackupService;
 import com.smdev.guice.msg.service.backup.FileSystemBackupService;
 
+/**
+ * Basic Module Configuration
+ * 
+ * @author Ireth
+ */
 public class ModuleBase extends AbstractModule {
 
 	@Override
@@ -25,7 +30,6 @@ public class ModuleBase extends AbstractModule {
 		 * bindings can also be chained.
 		 */
 		bind(BackupService.class).to(FileSystemBackupService.class);
-
 	}
 
 }

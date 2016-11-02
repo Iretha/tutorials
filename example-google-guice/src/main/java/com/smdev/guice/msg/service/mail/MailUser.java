@@ -5,6 +5,11 @@ import javax.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.smdev.guice.msg.domain.user.UserImpl;
 
+/**
+ * Implementation of an email user
+ * 
+ * @author Ireth
+ */
 public class MailUser extends UserImpl {
 
 	@Inject
@@ -16,4 +21,5 @@ public class MailUser extends UserImpl {
 		return getUserName();
 	}
 
+	// TODO custom implementation
 }

@@ -10,7 +10,7 @@ import com.smdev.guice.msg.service.fb.FBUser;
 import com.smdev.guice.msg.service.fb.FacebookService;
 
 /**
- * Google Guice DI configuration
+ * Specific configuration of the Facebook module
  * 
  * @author Ireth
  */
@@ -32,7 +32,7 @@ public class ModuleFacebook extends ModuleBase {
 		bind(MessageService.class).to(FacebookService.class);
 
 		/*
-		 * Factory for facebook object types
+		 * Factory for specific facebook object types
 		 */
 		install(new FactoryModuleBuilder().implement(User.class, FBUser.class).implement(Message.class, FBMessage.class)
 				.build(DomainFactory.class));

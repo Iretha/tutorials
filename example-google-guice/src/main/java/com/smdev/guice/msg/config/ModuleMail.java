@@ -10,7 +10,7 @@ import com.smdev.guice.msg.service.mail.MailService;
 import com.smdev.guice.msg.service.mail.MailUser;
 
 /**
- * Google Guice DI configuration
+ * Specific configuration of the mail module
  * 
  * @author Ireth
  */
@@ -31,7 +31,7 @@ public class ModuleMail extends ModuleBase {
 		bind(MessageService.class).to(MailService.class);
 
 		/*
-		 * Factory for mail object types
+		 * Factory for specific mail object types
 		 */
 		install(new FactoryModuleBuilder().implement(User.class, MailUser.class)
 				.implement(Message.class, MailMessage.class).build(DomainFactory.class));

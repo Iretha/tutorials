@@ -8,6 +8,11 @@ import com.google.inject.assistedinject.Assisted;
 import com.smdev.guice.msg.domain.message.MessageImpl;
 import com.smdev.guice.msg.domain.user.User;
 
+/**
+ * Implementation of an email message
+ * 
+ * @author Ireth
+ */
 public class MailMessage extends MessageImpl {
 
 	/** */
@@ -18,4 +23,5 @@ public class MailMessage extends MessageImpl {
 		super(recipients, sender, body);
 	}
 
+	// TODO custom implementation
 }

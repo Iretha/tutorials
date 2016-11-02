@@ -6,7 +6,7 @@ import java.util.List;
 import com.smdev.guice.msg.domain.user.User;
 
 /**
- * Represents a message that can be exchanged between different correspondents
+ * Basic implementation of a message
  * 
  * @author Ireth
  */
