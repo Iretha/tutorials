@@ -8,11 +8,11 @@ import org.junit.Test;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.smdev.guice.msg.config.ModuleFacebook;
+import com.smdev.guice.msg.config.ModuleMail;
 import com.smdev.guice.msg.domain.DomainFactory;
 import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.domain.user.User;
-import com.smdev.guice.msg.config.ModuleFacebook;
-import com.smdev.guice.msg.config.ModuleMail;
 
 public class MessageAppTest {
 

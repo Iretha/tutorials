@@ -15,7 +15,11 @@ public class ModuleBase extends AbstractModule {
 	@Override
 	protected void configure() {
 		/*
-		 * Instance binding -> binds a type to a specific instance
+		 * Built-in binding annotation @Named -> maps an annotated type to its
+		 * implementation
+		 * 
+		 * Since the compiler can't check the string, @Named should be used
+		 * sparingly.
 		 * 
 		 * Avoid using .toInstance with objects that are complicated to create,
 		 * since it can slow down application startup. You can use an @Provides
@@ -31,5 +35,4 @@ public class ModuleBase extends AbstractModule {
 		 */
 		bind(BackupService.class).to(FileSystemBackupService.class);
 	}
-
 }

@@ -1,12 +1,16 @@
 package com.smdev.guice.msg.config;
 
+import com.google.inject.Scopes;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.smdev.guice.msg.domain.DomainFactory;
 import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.domain.user.User;
+import com.smdev.guice.msg.service.LogService;
 import com.smdev.guice.msg.service.MessageService;
+import com.smdev.guice.msg.service.mail.MailType;
+import com.smdev.guice.msg.service.mail.MailLogService;
 import com.smdev.guice.msg.service.mail.MailMessage;
-import com.smdev.guice.msg.service.mail.MailService;
+import com.smdev.guice.msg.service.mail.MailMessageService;
 import com.smdev.guice.msg.service.mail.MailUser;
 
 /**
@@ -20,6 +24,12 @@ public class ModuleMail extends ModuleBase {
 	protected void configure() {
 		super.configure();
 		/*
+		 * Factory for specific mail object types
+		 */
+		install(new FactoryModuleBuilder().implement(User.class, MailUser.class)
+				.implement(Message.class, MailMessage.class).build(DomainFactory.class));
+
+		/*
 		 * Linked binding -> maps a type to its implementation
 		 * 
 		 * In this case we will use only one implementation at a time. Linked
@@ -28,13 +38,15 @@ public class ModuleMail extends ModuleBase {
 		 * Scopes.SINGLETON ensures that we have only one instance of the type
 		 * for the whole application at a time
 		 */
-		bind(MessageService.class).to(MailService.class);
+		bind(MessageService.class).to(MailMessageService.class).in(Scopes.SINGLETON);
 
 		/*
-		 * Factory for specific mail object types
+		 * Built-in binding annotation @Named -> maps an annotated type to its
+		 * implementation
+		 *
+		 * Custom annotation type -> maps an annotated type to its
+		 * implementation
 		 */
-		install(new FactoryModuleBuilder().implement(User.class, MailUser.class)
-				.implement(Message.class, MailMessage.class).build(DomainFactory.class));
+		bind(LogService.class).annotatedWith(MailType.class).to(MailLogService.class).in(Scopes.SINGLETON);
 	}
-
 }
