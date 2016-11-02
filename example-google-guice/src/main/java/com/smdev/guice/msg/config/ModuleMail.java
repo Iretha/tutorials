@@ -1,11 +1,13 @@
-package com.smdev.guice.msg;
+package com.smdev.guice.msg.config;
 
 import com.google.inject.assistedinject.FactoryModuleBuilder;
+import com.smdev.guice.msg.domain.DomainFactory;
+import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.domain.user.User;
-import com.smdev.guice.msg.domain.user.UserFactory;
 import com.smdev.guice.msg.service.MessageService;
-import com.smdev.guice.msg.service.module.mail.MailService;
-import com.smdev.guice.msg.service.module.mail.MailUser;
+import com.smdev.guice.msg.service.mail.MailMessage;
+import com.smdev.guice.msg.service.mail.MailService;
+import com.smdev.guice.msg.service.mail.MailUser;
 
 /**
  * Google Guice DI configuration
@@ -29,9 +31,10 @@ public class ModuleMail extends ModuleBase {
 		bind(MessageService.class).to(MailService.class);
 
 		/*
-		 * Factory for email users
+		 * Factory for mail object types
 		 */
-		install(new FactoryModuleBuilder().implement(User.class, MailUser.class).build(UserFactory.class));
+		install(new FactoryModuleBuilder().implement(User.class, MailUser.class)
+				.implement(Message.class, MailMessage.class).build(DomainFactory.class));
 	}
 
 }

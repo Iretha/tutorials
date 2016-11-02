@@ -1,4 +1,4 @@
-package com.smdev.guice.msg.service.module.mail;
+package com.smdev.guice.msg.service.mail;
 
 import javax.inject.Inject;
 

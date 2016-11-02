@@ -1,6 +1,6 @@
-package com.smdev.guice.msg.service.module.fb;
+package com.smdev.guice.msg.service.fb;
 
-import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.service.MessageService;
 
 /**

@@ -1,11 +1,13 @@
-package com.smdev.guice.msg;
+package com.smdev.guice.msg.config;
 
 import com.google.inject.assistedinject.FactoryModuleBuilder;
+import com.smdev.guice.msg.domain.DomainFactory;
+import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.domain.user.User;
-import com.smdev.guice.msg.domain.user.UserFactory;
 import com.smdev.guice.msg.service.MessageService;
-import com.smdev.guice.msg.service.module.fb.FBUser;
-import com.smdev.guice.msg.service.module.fb.FacebookService;
+import com.smdev.guice.msg.service.fb.FBMessage;
+import com.smdev.guice.msg.service.fb.FBUser;
+import com.smdev.guice.msg.service.fb.FacebookService;
 
 /**
  * Google Guice DI configuration
@@ -28,11 +30,12 @@ public class ModuleFacebook extends ModuleBase {
 		 * for the whole application at a time
 		 */
 		bind(MessageService.class).to(FacebookService.class);
-		
+
 		/*
-		 * Factory for facebook users
+		 * Factory for facebook object types
 		 */
-		install(new FactoryModuleBuilder().implement(User.class, FBUser.class).build(UserFactory.class));
+		install(new FactoryModuleBuilder().implement(User.class, FBUser.class).implement(Message.class, FBMessage.class)
+				.build(DomainFactory.class));
 	}
 
 }

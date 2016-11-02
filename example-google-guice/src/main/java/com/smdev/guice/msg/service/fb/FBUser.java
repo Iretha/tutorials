@@ -1,4 +1,4 @@
-package com.smdev.guice.msg.service.module.fb;
+package com.smdev.guice.msg.service.fb;
 
 import javax.inject.Inject;
 

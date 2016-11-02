@@ -1,6 +1,6 @@
-package com.smdev.guice.msg.service.module.mail;
+package com.smdev.guice.msg.service.mail;
 
-import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.service.MessageService;
 
 /**

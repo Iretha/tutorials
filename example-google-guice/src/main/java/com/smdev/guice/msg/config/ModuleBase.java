@@ -1,4 +1,4 @@
-package com.smdev.guice.msg;
+package com.smdev.guice.msg.config;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;

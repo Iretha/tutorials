@@ -1,6 +1,6 @@
 package com.smdev.guice.msg.service;
 
-import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.domain.message.Message;
 
 /**
  * Service for backuping messages

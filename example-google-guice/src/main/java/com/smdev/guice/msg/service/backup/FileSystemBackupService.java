@@ -2,7 +2,7 @@ package com.smdev.guice.msg.service.backup;
 
 import javax.inject.Singleton;
 
-import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.service.BackupService;
 
 /**

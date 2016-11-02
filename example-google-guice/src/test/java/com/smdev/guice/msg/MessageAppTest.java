@@ -8,22 +8,22 @@ import org.junit.Test;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.smdev.guice.msg.domain.MessageException;
+import com.smdev.guice.msg.domain.DomainFactory;
+import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.domain.user.User;
-import com.smdev.guice.msg.domain.user.UserFactory;
-import com.smdev.guice.msg.domain.Message;
+import com.smdev.guice.msg.config.ModuleFacebook;
+import com.smdev.guice.msg.config.ModuleMail;
 
 public class MessageAppTest {
 
-	private static User createUser(Injector inj, String name) {
-		UserFactory factory = inj.getInstance(UserFactory.class);
-		return factory.createUser("@" + name, name);
+	private static User createUser(DomainFactory factory, String name) {
+		return factory.create("@" + name, name);
 	}
 
-	private static List<User> createUserList(Injector inj, String... names) {
+	private static List<User> createUserList(DomainFactory factory, String... names) {
 		List<User> list = new ArrayList<>();
 		for (String name : names) {
-			list.add(createUser(inj, name));
+			list.add(createUser(factory, name));
 		}
 		return list;
 	}
@@ -32,10 +32,12 @@ public class MessageAppTest {
 	public void testSendFbMessage() {
 		Injector inj = Guice.createInjector(new ModuleFacebook());
 		MessageApp app = inj.getInstance(MessageApp.class);
-
+		
+		DomainFactory factory = inj.getInstance(DomainFactory.class);
+		Message msg = factory.create(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "FB message");
 		try {
-			app.sendMessage(new Message(createUserList(inj, "Miller", "Peter"), createUser(inj, "Ivan"), "FB message"));
-		} catch (MessageException e) {
+			app.sendMessage(msg);
+		} catch (MessageAppException e) {
 			Assert.fail(e.getMessage());
 		}
 	}
@@ -45,9 +47,11 @@ public class MessageAppTest {
 		Injector inj = Guice.createInjector(new ModuleMail());
 		MessageApp app = inj.getInstance(MessageApp.class);
 
+		DomainFactory factory = inj.getInstance(DomainFactory.class);
+		Message msg = factory.create(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "Mail message");
 		try {
-			app.sendMessage(new Message(createUserList(inj, "Miller", "Peter"), createUser(inj, "Ivan"), "Email message"));
-		} catch (MessageException e) {
+			app.sendMessage(msg);
+		} catch (MessageAppException e) {
 			Assert.fail(e.getMessage());
 		}
 	}

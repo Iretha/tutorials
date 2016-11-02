@@ -3,11 +3,9 @@ package com.smdev.guice.msg;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.smdev.guice.msg.domain.MessageException;
-import com.smdev.guice.msg.domain.user.UserFactory;
+import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.service.BackupService;
 import com.smdev.guice.msg.service.MessageService;
-import com.smdev.guice.msg.domain.Message;
 
 /**
  * Simple application for sending messages
@@ -27,9 +25,6 @@ public class MessageApp {
 	/** Message service */
 	private MessageService messageService;
 	
-	@Inject
-	private UserFactory userFactory;
-
 	/**
 	 * Constructor injection example
 	 * 
@@ -41,18 +36,14 @@ public class MessageApp {
 		this.messageService = messageService;
 	}
 
-	public UserFactory getUserFactory() {
-		return userFactory;
-	}
-
 	/**
 	 * Sends a message
 	 * 
 	 * @param message
 	 * @return boolean
-	 * @throws MessageException
+	 * @throws MessageAppException
 	 */
-	public boolean sendMessage(Message message) throws MessageException {
+	public boolean sendMessage(Message message) throws MessageAppException {
 		this.backupService.backup(message);
 
 		boolean sent = false;
