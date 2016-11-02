@@ -15,7 +15,7 @@ import com.smdev.guice.msg.domain.Correspondent;
 public class MessageApplicationTest {
 
 	private static Correspondent createCorresp(String name) {
-		return new Correspondent("@"+name , name);
+		return new Correspondent("@" + name, name);
 	}
 
 	private static List<Correspondent> createCorrespList(String... names) {
@@ -27,12 +27,26 @@ public class MessageApplicationTest {
 	}
 
 	@Test
-	public void testSendMessage() {
-		Injector injector = Guice.createInjector(new MessageAppInjector());
-		MessageApp app = injector.getInstance(MessageApp.class);
+	public void testSendFbMessage() {
+		Injector inj = Guice.createInjector(new ModuleFacebook());
+		MessageApp app = inj.getInstance(MessageApp.class);
 
 		try {
-			app.sendMessage(new Message(createCorrespList("Miller", "Peter"), createCorresp("Ivan"), "exmple message"));
+			app.sendMessage(
+					new Message(createCorrespList("Miller", "Peter"), createCorresp("Ivan"), "FB message"));
+		} catch (MessageException e) {
+			Assert.fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void testSendMailMessage() {
+		Injector inj = Guice.createInjector(new ModuleMail());
+		MessageApp app = inj.getInstance(MessageApp.class);
+
+		try {
+			app.sendMessage(
+					new Message(createCorrespList("Miller", "Peter"), createCorresp("Ivan"), "Email message"));
 		} catch (MessageException e) {
 			Assert.fail(e.getMessage());
 		}

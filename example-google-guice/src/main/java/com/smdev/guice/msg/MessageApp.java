@@ -32,9 +32,9 @@ public class MessageApp {
 	 * @param backupService
 	 */
 	@Inject
-	public MessageApp(BackupService backupService) {
+	public MessageApp(MessageService messageService) {
 		super();
-		this.backupService = backupService;
+		this.messageService = messageService;
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class MessageApp {
 	 * @param service
 	 */
 	@Inject
-	public void setMessageService(MessageService service) {
-		this.messageService = service;
+	public void setBackupService(BackupService service) {
+		this.backupService = service;
 	}
 }
