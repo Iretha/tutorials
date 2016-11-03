@@ -22,4 +22,5 @@ public class MailUser extends UserImpl {
 	}
 
 	// TODO custom implementation
+
 }
