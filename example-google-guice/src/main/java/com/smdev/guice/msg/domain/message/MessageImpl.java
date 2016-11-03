@@ -7,7 +7,7 @@ import com.smdev.guice.msg.domain.user.User;
 
 /**
  * Basic implementation of a message
- * 
+ *
  * @author Ireth
  */
 public abstract class MessageImpl implements Serializable, Message {
@@ -29,28 +29,29 @@ public abstract class MessageImpl implements Serializable, Message {
 
 	@Override
 	public String getBody() {
-		return body;
+		return this.body;
 	}
 
 	@Override
 	public long getCreateTime() {
-		return createTime;
+		return this.createTime;
 	}
 
 	@Override
 	public List<User> getRecipients() {
-		return recipients;
+		return this.recipients;
 	}
 
 	@Override
 	public User getSender() {
-		return sender;
+		return this.sender;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append(createTime).append(": from ").append(sender.getUserName()).append(" to ").append(recipients);
+		str.append(this.createTime).append(": from ").append(this.sender.getUserName())
+				.append(" to ").append(this.recipients);
 		return str.toString();
 	}
 

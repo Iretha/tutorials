@@ -7,7 +7,7 @@ import com.smdev.guice.msg.domain.user.UserImpl;
 
 /**
  * Implementation of a facebook user
- * 
+ *
  * @author Ireth
  */
 public class FBUser extends UserImpl {
@@ -16,6 +16,6 @@ public class FBUser extends UserImpl {
 	public FBUser(@Assisted("userName") String userName, @Assisted("name") String name) {
 		super(userName, name);
 	}
-	
+
 	// TODO custom implementation
 }

@@ -28,13 +28,15 @@ public class MessageAppTest {
 		return list;
 	}
 
-	@Test
-	public void testSendFbMessage() {
-		Injector inj = Guice.createInjector(new ModuleFacebook());
+	/**
+	 * @param inj
+	 */
+	private void sendMessage(Injector inj, String msgText) {
 		MessageApp app = inj.getInstance(MessageApp.class);
-		
+
 		DomainFactory factory = inj.getInstance(DomainFactory.class);
-		Message msg = factory.createMessage(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "FB message");
+		Message msg = factory.createMessage(createUserList(factory, "Miller", "Peter"),
+				createUser(factory, "Ivan"), msgText);
 		try {
 			app.sendMessage(msg);
 		} catch (MessageAppException e) {
@@ -43,17 +45,15 @@ public class MessageAppTest {
 	}
 
 	@Test
+	public void testSendFbMessage() {
+		Injector inj = Guice.createInjector(new ModuleFacebook());
+		sendMessage(inj, "FB message");
+	}
+
+	@Test
 	public void testSendMailMessage() {
 		Injector inj = Guice.createInjector(new ModuleMail());
-		MessageApp app = inj.getInstance(MessageApp.class);
-
-		DomainFactory factory = inj.getInstance(DomainFactory.class);
-		Message msg = factory.createMessage(createUserList(factory, "Miller", "Peter"), createUser(factory, "Ivan"), "Mail message");
-		try {
-			app.sendMessage(msg);
-		} catch (MessageAppException e) {
-			Assert.fail(e.getMessage());
-		}
+		sendMessage(inj, "Mail message");
 	}
 
 }

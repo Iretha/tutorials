@@ -9,13 +9,13 @@ import com.smdev.guice.msg.service.MessageService;
 
 /**
  * Simple application for sending messages
- * 
+ *
  * @author Ireth
  */
 public class MessageApp {
 
 	/** Message backup service */
-	private BackupService backupService = null;;
+	private BackupService backupService = null;
 
 	/** Max attempts to try sending the message */
 	@Inject
@@ -24,10 +24,10 @@ public class MessageApp {
 
 	/** Message service */
 	private MessageService messageService;
-	
+
 	/**
 	 * Constructor injection example
-	 * 
+	 *
 	 * @param backupService
 	 */
 	@Inject
@@ -38,7 +38,7 @@ public class MessageApp {
 
 	/**
 	 * Sends a message
-	 * 
+	 *
 	 * @param message
 	 * @return boolean
 	 * @throws MessageAppException
@@ -49,7 +49,7 @@ public class MessageApp {
 		boolean sent = false;
 		int attempts = 1;
 		sent = this.messageService.send(message);
-		while (!sent && attempts <= MAX_RETRY_ATTEMPTS) {
+		while (!sent && attempts <= this.MAX_RETRY_ATTEMPTS) {
 			sent = this.messageService.send(message);
 			attempts++;
 		}
@@ -58,7 +58,7 @@ public class MessageApp {
 
 	/**
 	 * Setter injection example
-	 * 
+	 *
 	 * @param service
 	 */
 	@Inject

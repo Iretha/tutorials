@@ -6,7 +6,7 @@ import com.smdev.guice.msg.domain.user.User;
 
 /**
  * Represents a message that can be exchanged between different users
- * 
+ *
  * @author Ireth
  */
 public interface Message {

@@ -10,7 +10,7 @@ import com.smdev.guice.msg.domain.user.User;
 
 /**
  * Implementation of an email message
- * 
+ *
  * @author Ireth
  */
 public class MailMessage extends MessageImpl {
@@ -19,7 +19,8 @@ public class MailMessage extends MessageImpl {
 	private static final long serialVersionUID = 1104389967485682554L;
 
 	@Inject
-	public MailMessage(@Assisted("recipients") List<User> recipients, @Assisted("sender") User sender, String body) {
+	public MailMessage(@Assisted("recipients") List<User> recipients,
+			@Assisted("sender") User sender, String body) {
 		super(recipients, sender, body);
 	}
 

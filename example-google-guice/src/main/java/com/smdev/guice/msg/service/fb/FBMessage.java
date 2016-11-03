@@ -10,7 +10,7 @@ import com.smdev.guice.msg.domain.user.User;
 
 /**
  * Implementation of a facebook message
- * 
+ *
  * @author Ireth
  */
 public class FBMessage extends MessageImpl {
@@ -19,7 +19,8 @@ public class FBMessage extends MessageImpl {
 	private static final long serialVersionUID = 1104389967485682554L;
 
 	@Inject
-	public FBMessage(@Assisted("recipients") List<User> recipients, @Assisted("sender") User sender, String body) {
+	public FBMessage(@Assisted("recipients") List<User> recipients, @Assisted("sender") User sender,
+			String body) {
 		super(recipients, sender, body);
 	}
 

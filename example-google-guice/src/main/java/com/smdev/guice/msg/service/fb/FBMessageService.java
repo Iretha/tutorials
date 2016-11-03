@@ -1,13 +1,14 @@
 package com.smdev.guice.msg.service.fb;
 
 import javax.inject.Inject;
+
 import com.smdev.guice.msg.domain.message.Message;
 import com.smdev.guice.msg.service.ActivityService;
 import com.smdev.guice.msg.service.MessageService;
 
 /**
  * Service for sending Facebook messages
- * 
+ *
  * @author Ireth
  */
 public class FBMessageService implements MessageService {

@@ -2,7 +2,7 @@ package com.smdev.guice.msg.domain.user;
 
 /**
  * Basic implementation of a user
- * 
+ *
  * @author Ireth
  */
 public abstract class UserImpl implements User {

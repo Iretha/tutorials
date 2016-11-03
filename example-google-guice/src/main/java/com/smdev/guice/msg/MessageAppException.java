@@ -2,7 +2,7 @@ package com.smdev.guice.msg;
 
 /**
  * Exception thrown by the application
- * 
+ *
  * @author Ireth
  */
 public class MessageAppException extends Exception {

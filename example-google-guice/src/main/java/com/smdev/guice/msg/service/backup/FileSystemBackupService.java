@@ -8,10 +8,10 @@ import com.smdev.guice.msg.service.BackupService;
 /**
  * Singleton Service, responsible for backuping messages in the file system.
  * <br>
- * 
+ *
  * Singleton means that we have only one instance for the whole application at a
  * time.
- * 
+ *
  * @author Ireth
  */
 @Singleton

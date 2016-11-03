@@ -7,7 +7,7 @@ import com.smdev.guice.msg.domain.user.UserImpl;
 
 /**
  * Implementation of an email user
- * 
+ *
  * @author Ireth
  */
 public class MailUser extends UserImpl {

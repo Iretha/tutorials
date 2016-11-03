@@ -6,7 +6,7 @@ import com.smdev.guice.msg.service.ActivityService;
 
 /**
  * Service for tracking mail activity
- * 
+ *
  * @author Ireth
  */
 @Singleton

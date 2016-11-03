@@ -8,16 +8,16 @@ import com.smdev.guice.msg.domain.user.User;
 
 /**
  * Factory for domain object types
- * 
+ *
  * @author Ireth
  */
 public interface DomainFactory {
 
 	/**
 	 * Creates an instance of {@link Message}
-	 * 
+	 *
 	 * @Assisted - we have to annotate only params of the same type
-	 * 
+	 *
 	 * @param recipients
 	 *            - message recipients
 	 * @param sender
@@ -26,13 +26,14 @@ public interface DomainFactory {
 	 *            - message body
 	 * @return new instance
 	 */
-	Message createMessage(@Assisted("recipients") List<User> recipients, @Assisted("sender") User sender, String body);
+	Message createMessage(@Assisted("recipients") List<User> recipients,
+			@Assisted("sender") User sender, String body);
 
 	/**
 	 * Creates an instance of {@link User}
-	 * 
+	 *
 	 * @Assisted - we have to annotate all params of the same type
-	 * 
+	 *
 	 * @param userName
 	 * @param name
 	 * @return new instance
