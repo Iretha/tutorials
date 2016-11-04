@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.smdev.bdd.cucu.HelloServiceTest" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="R2D2" time="0.0">
+  <properties/>
+  <system-out><![CDATA[No features found at [classpath:com/smdev/bdd/cucu]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

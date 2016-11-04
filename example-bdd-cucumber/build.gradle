@@ -1,0 +1,19 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+version = '0.1'
+
+// In this section you declare where to find the dependencies
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    // The production code uses the SLF4J logging API at compile time
+    compile 'org.slf4j:slf4j-api:1.7.21'
+
+        testCompile 'junit:junit:4.12',
+            'info.cukes:cucumber-java:1.2.4',
+            'info.cukes:cucumber-junit:1.2.4'
+}
