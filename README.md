@@ -1,10 +1,10 @@
 Examples of different Java related technologies
 ================================================================================
 
-- **DI** (Dependency Injection)
+- **IoC** (Inversion of Control) and **DI** (Dependency Injection)
 
-> - [**example-google-guice**](https://github.com/Iretha/tutorials/tree/master/example-google-guice) - Exmple project with Maven, Google Guice DI Framework
+> - [**example-google-guice**](https://github.com/Iretha/tutorials/tree/master/example-google-guice) - Exmple project with [Maven](https://maven.apache.org/), [Google Guice DI framework](https://github.com/google/guice/wiki/GettingStarted)
 
 - **BDD** (Behavior Driven Development)
 
-> - [**example-bdd-cucumber**](https://github.com/Iretha/tutorials/tree/master/example-bdd-cucumber) - Exmple project with Gradle, Cucumber, JUnit
+> - [**example-bdd-cucumber**](https://github.com/Iretha/tutorials/tree/master/example-bdd-cucumber) - Exmple project with [Gradle](https://gradle.org/getting-started-gradle-java/), [Cucumber](https://cucumber.io/docs/reference/jvm#java), [JUnit](http://junit.org/junit4/)
