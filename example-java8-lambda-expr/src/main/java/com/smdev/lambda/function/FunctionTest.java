@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.smdev.lambda.aa.function;
+package com.smdev.lambda.function;
 
 import java.net.URISyntaxException;
 import java.util.List;

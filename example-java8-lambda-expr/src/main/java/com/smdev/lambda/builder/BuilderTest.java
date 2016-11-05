@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.smdev.lambda.aa.builder;
+package com.smdev.lambda.builder;
 
 import com.smdev.lambda.Person;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.smdev.lambda.aa.predicate;
+package com.smdev.lambda.predicate;
 
 import java.net.URISyntaxException;
 import java.util.List;

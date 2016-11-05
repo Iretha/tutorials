@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.smdev.lambda.aa.functional.interfaces;
+package com.smdev.lambda.functionalInterfaces;
 
 /**
  * @author Ireth

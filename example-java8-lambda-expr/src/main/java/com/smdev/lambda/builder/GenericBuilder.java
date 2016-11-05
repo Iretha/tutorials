@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.smdev.lambda.aa.builder;
+package com.smdev.lambda.builder;
 
 import java.util.ArrayList;
 import java.util.List;

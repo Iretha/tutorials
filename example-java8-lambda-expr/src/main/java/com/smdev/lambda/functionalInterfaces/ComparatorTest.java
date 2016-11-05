@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.smdev.lambda.aa.functional.interfaces;
+package com.smdev.lambda.functionalInterfaces;
 
 import java.net.URISyntaxException;
 import java.util.Collections;
