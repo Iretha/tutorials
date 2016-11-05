@@ -7,16 +7,14 @@ What can you find in this project?
 ----------------------------------------------
  - Project setup - [pom.xml](https://github.com/Iretha/tutorials/blob/master/example-google-guice/pom.xml)
 	 - Maven - building a project
-	 - Google Guice - DI framework
+	 - Google Guice DI framework and Google Guice AssistedInject (Support for factories)
 ```xml		
 	<dependency>
 		<groupId>com.google.inject</groupId>
 		<artifactId>guice</artifactId>
 		<version>4.1.0</version>
 	</dependency>
-```
-	 - Google Guice AssistedInject - Support for factories
-```xml		
+ 	
 	<dependency>
 		<groupId>com.google.inject.extensions</groupId>
 		<artifactId>guice-assistedinject</artifactId>
