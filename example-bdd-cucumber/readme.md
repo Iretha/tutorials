@@ -7,10 +7,10 @@ This is an example **Stock management application**, which illustartes how to im
 
 What can you find in this project?
 ----------------------------------------------
- - Project setup - [build.gradle](https://github.com/Iretha/tutorials/blob/master/example-bdd-cucumber/build.gradle)
+- Project setup - [build.gradle](https://github.com/Iretha/tutorials/blob/master/example-bdd-cucumber/build.gradle)
 	 - Gradle - building a project
 	 - Cucumber - BDD framework
-`gradle	
+```gradle	
 // In this section you declare where to find the dependencies
 repositories {
     jcenter()
@@ -24,9 +24,10 @@ dependencies {
         testCompile 'junit:junit:4.12',
             'info.cukes:cucumber-java:1.2.4',
             'info.cukes:cucumber-junit:1.2.4'
-}`
-		
- - Guice HOW-TOs in the application
+}
+```
+
+- Guice HOW-TOs in the application
 	 - How to write *.feature files
 	 - How to implement Definition Steps
 	 - How to pass table data to step definitions
@@ -37,5 +38,5 @@ dependencies {
 	 - How to pass int as parameter
 	 - How to run tests
 	 
- - Running the features
+- Running the features
 	 - [StockTestRunner](https://github.com/Iretha/tutorials/blob/master/example-bdd-cucumber/src/test/java/com/smdev/bdd/cuke/example/StockTestRunner.java)
