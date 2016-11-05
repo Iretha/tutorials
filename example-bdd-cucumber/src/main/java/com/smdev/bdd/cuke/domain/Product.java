@@ -12,19 +12,21 @@ import java.util.Date;
 public class Product {
 
 	private Date expiryDate;
+	private int id;
 	private ProductType type;
-
-	public Product(ProductType type, Date expiryDate) {
-		super();
-		this.type = type;
-		this.expiryDate = expiryDate;
-	}
 
 	/**
 	 * @return the expiryDate
 	 */
 	public Date getExpiryDate() {
 		return this.expiryDate;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return this.id;
 	}
 
 	/**

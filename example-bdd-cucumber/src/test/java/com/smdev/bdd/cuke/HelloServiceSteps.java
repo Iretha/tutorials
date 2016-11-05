@@ -18,18 +18,18 @@ public class HelloServiceSteps {
 	private HelloService service = new HelloServiceImpl();
 	private String userName = null;
 
-	@Given("^User with username (.*)$")
-	public void given(String name) throws Throwable {
+	@Given("^User with username '(.*)$'")
+	public void givenWithUsername(String name) throws Throwable {
 		this.userName = name;
 	}
 
-	@Then("^Greeting message appears$")
-	public void then() throws Throwable {
-		Assert.assertEquals("Hello, " + this.userName, this.outcome);
+	@Then("^Greeting message with text '(.*)' appears$")
+	public void thenGreetingMsgAppears(String greeting) throws Throwable {
+		Assert.assertEquals(greeting, this.outcome);
 	}
 
 	@When("Presses login button$")
-	public void when() throws Throwable {
+	public void whenLoginBtnIsPessed() throws Throwable {
 		this.outcome = this.service.sayHello(this.userName);
 	}
 }

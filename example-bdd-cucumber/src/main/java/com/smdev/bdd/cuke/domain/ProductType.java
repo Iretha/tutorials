@@ -43,4 +43,18 @@ public enum ProductType {
 		return this.name;
 	}
 
+	/**
+	 * @param productCode
+	 * @return
+	 */
+	public static ProductType findTypeByCode(int productCode) {
+		ProductType[] types = ProductType.values();
+		for (ProductType t : types) {
+			if (t.getCode() == productCode) {
+				return t;
+			}
+		}
+		return null;
+	}
+
 }
