@@ -10,7 +10,7 @@ What can you find in this project?
  - Project setup - [build.gradle](https://github.com/Iretha/tutorials/blob/master/example-bdd-cucumber/build.gradle)
 	 - Gradle - building a project
 	 - Cucumber - BDD framework
-> `gradle	
+`gradle	
 // In this section you declare where to find the dependencies
 repositories {
     jcenter()
