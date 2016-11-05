@@ -1,6 +1,11 @@
 example-google-guice
 ===========================
->This is an example **Message application**, which simulates sending messages.  The application has currently two modules - *Facebook module* and *Mail module*. The modules are not fully implemented, because their main purpose is to illustrate the usage of [Google Guice DI framework](https://github.com/google/guice/wiki/GettingStarted).
+> This is an example **Message application**, which simulates sending messages. <br>
+> The application has currently two modules: 
+>- *Facebook module*
+>- *Mail module*
+>
+> The modules are not fully implemented, because their main purpose is to illustrate the usage of [Google Guice DI framework](https://github.com/google/guice/wiki/GettingStarted).
 
 
 What can you find in this project?
