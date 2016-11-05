@@ -1,16 +1,12 @@
 /**
  *
  */
-package com.smdev.bdd.cuke.service;
+package com.smdev.bdd.cuke.example;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.smdev.bdd.cuke.domain.CategoryType;
-import com.smdev.bdd.cuke.domain.Product;
-import com.smdev.bdd.cuke.domain.ProductType;
 
 /**
  * @author Ireth

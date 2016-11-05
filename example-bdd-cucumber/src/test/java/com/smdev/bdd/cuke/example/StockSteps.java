@@ -1,15 +1,16 @@
 /**
  * 
  */
-package com.smdev.bdd.cuke.service;
+package com.smdev.bdd.cuke.example;
 
 import java.util.List;
 
 import org.junit.Assert;
 
-import com.smdev.bdd.cuke.domain.CategoryType;
-import com.smdev.bdd.cuke.domain.Product;
-import com.smdev.bdd.cuke.domain.ProductType;
+import com.smdev.bdd.cuke.example.CategoryType;
+import com.smdev.bdd.cuke.example.Product;
+import com.smdev.bdd.cuke.example.ProductType;
+import com.smdev.bdd.cuke.example.StockImpl;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

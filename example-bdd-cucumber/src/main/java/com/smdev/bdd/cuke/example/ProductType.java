@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.smdev.bdd.cuke.domain;
+package com.smdev.bdd.cuke.example;
 
 /**
  * @author Ireth

@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.smdev.bdd.cuke.service;
+package com.smdev.bdd.cuke.example;
 
 import org.junit.runner.RunWith;
 
