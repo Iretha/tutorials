@@ -21,7 +21,7 @@ What can you find in this project?
 			<version>4.1.0</version>
 		</dependency>`
 
- - Guice HOW-TOs in the application
+ - Guice HOW-TOs, illustrated in the application
 	 - Linked Bindings
 	 - Binding Annotations
 	 - Custom Annotations
