@@ -16,7 +16,6 @@ repositories {
     jcenter()
     mavenCentral()
 }
-
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
