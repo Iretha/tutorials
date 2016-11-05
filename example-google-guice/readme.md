@@ -24,7 +24,7 @@ What can you find in this project?
  - Guice HOW-TOs in the application
 	 - Linked Bindings
 	 - Binding Annotations
-	 - 	Custom Annotations
+	 - Custom Annotations
 	 - Named Annotations
 	 - Instance Bindings
 	 - Constructor Bindings
@@ -34,4 +34,4 @@ What can you find in this project?
 	 - Assisted Injections
 	 
  - Simulation of a Message Client
-	 - [Application Entry Point - Simple JUnit Test Case](https://github.com/Iretha/tutorials/blob/master/example-google-guice/src/test/java/com/smdev/guice/msg/MessageAppTest.java)
+	 - [Entry Point - Simple JUnit Test Case](https://github.com/Iretha/tutorials/blob/master/example-google-guice/src/test/java/com/smdev/guice/msg/MessageAppTest.java)
