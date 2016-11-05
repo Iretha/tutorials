@@ -4,8 +4,9 @@
 package com.smdev.bdd.cuke.service;
 
 /**
+ * Exception thrown during stock management
+ * 
  * @author Ireth
- *
  */
 public class StockException extends Exception {
 

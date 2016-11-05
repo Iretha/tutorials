@@ -93,11 +93,7 @@ public class StockImpl {
 	 */
 	public void removeProduct(ProductType productType) throws StockException {
 		List<Product> prods = getProductsByType(productType);
-		if (prods.isEmpty()) {
-			throw new StockException("Product is not available!");
-		}
-		Product removed = prods.remove(prods.size() - 1);
-		if (removed == null) {
+		if (prods.isEmpty() || prods.remove(prods.size() - 1) == null) {
 			throw new StockException("Product is not available!");
 		}
 	}

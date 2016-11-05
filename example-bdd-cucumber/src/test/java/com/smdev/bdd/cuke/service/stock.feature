@@ -1,4 +1,4 @@
-Feature: Stock managment
+Feature: Stock management
 
 Scenario: MODIFY stock products
 Given stock is initialized with the following products

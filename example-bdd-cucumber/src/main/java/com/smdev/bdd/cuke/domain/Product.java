@@ -6,8 +6,9 @@ package com.smdev.bdd.cuke.domain;
 import java.util.Date;
 
 /**
- * @author Ireth
+ * Model of a product
  *
+ * @author Ireth
  */
 public class Product {
 

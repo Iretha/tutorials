@@ -16,6 +16,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 /**
+ * Scenario steps for feature "Stock management"
+ * 
  * @author Ireth
  */
 public class StockSteps {

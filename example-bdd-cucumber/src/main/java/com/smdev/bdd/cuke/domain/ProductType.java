@@ -8,16 +8,14 @@ package com.smdev.bdd.cuke.domain;
  */
 public enum ProductType {
 
-	BREAD_MAMAS(0, CategoryType.BREAD, "Mamas bread"),
-	BREAD_PAPAS(1, CategoryType.BREAD, "Papas bread"),
-	SUGAR_SWEET(2, CategoryType.SUGAR, "Sweet thing");
+	BREAD_MAMAS(CategoryType.BREAD, "Mamas bread"),
+	BREAD_PAPAS(CategoryType.BREAD, "Papas bread"),
+	SUGAR_SWEET(CategoryType.SUGAR, "Sweet thing");
 
 	private CategoryType category;
-	private int code;
 	private String name;
 
-	private ProductType(int code, CategoryType category, String name) {
-		this.code = code;
+	private ProductType(CategoryType category, String name) {
 		this.category = category;
 		this.name = name;
 	}
@@ -30,31 +28,9 @@ public enum ProductType {
 	}
 
 	/**
-	 * @return the code
-	 */
-	public int getCode() {
-		return this.code;
-	}
-
-	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return this.name;
 	}
-
-	/**
-	 * @param productCode
-	 * @return
-	 */
-	public static ProductType findTypeByCode(int productCode) {
-		ProductType[] types = ProductType.values();
-		for (ProductType t : types) {
-			if (t.getCode() == productCode) {
-				return t;
-			}
-		}
-		return null;
-	}
-
 }

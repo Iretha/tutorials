@@ -13,5 +13,5 @@ import cucumber.api.junit.Cucumber;
  */
 @RunWith(Cucumber.class)
 public class StockTestRunner {
-	//
+	// empty class for runnung cucumber test scenarios
 }
