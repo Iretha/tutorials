@@ -1,5 +1,7 @@
 Examples of different Java related technologies
 ================================================================================
 
- -  **example-google-guice** - Example project with Maven and Google Guice DI framework
- -  **example-bdd-cucumber** - BDD (Behavior Driven Development) - Project with Gradle, Cucumber and JUnit
+- **DI** (Dependency Injection)
+> - [**example-google-guice**](https://github.com/Iretha/tutorials/tree/master/example-google-guice) - Exmple project with Maven, Google Guice DI Framework
+- **BDD** (Behavior Driven Development)
+> - [**example-bdd-cucumber**](https://github.com/Iretha/tutorials/tree/master/example-bdd-cucumber) - Exmple project with Gradle, Cucumber, JUnit
