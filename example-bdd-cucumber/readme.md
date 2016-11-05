@@ -1,7 +1,7 @@
 
 example-bdd-cucumber
 ===========================
-This is an example **Stock management application**, which illustartes how to implement test scenarios and features with 
+This is an example **Stock management application**, which illustrates how to implement test scenarios and features with 
 [Cucumber](https://cucumber.io/docs/reference/jvm#java). 
 
 
