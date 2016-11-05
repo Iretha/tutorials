@@ -27,7 +27,7 @@ dependencies {
 }
 ```
 
-- Guice HOW-TOs in the application
+- Cucumber HOW-TOs, illustrated in the application
 	 - How to write *.feature files
 	 - How to implement Definition Steps
 	 - How to pass table data to step definitions
