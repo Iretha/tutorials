@@ -8,18 +8,21 @@ What can you find in this project?
  - Project setup - [pom.xml](https://github.com/Iretha/tutorials/blob/master/example-google-guice/pom.xml)
 	 - Maven - building a project
 	 - Google Guice - DI framework
-> `		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-			<version>4.1.0</version>
-		</dependency>`
-		
-	 - Google Guice AssistedInject - Support for factories 
-> `		<dependency>
+```xml		
+	<dependency>
+		<groupId>com.google.inject</groupId>
+		<artifactId>guice</artifactId>
+		<version>4.1.0</version>
+	</dependency>
+```
+	 - Google Guice AssistedInject - Support for factories
+```xml		
+	<dependency>
 		<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-assistedinject</artifactId>
-			<version>4.1.0</version>
-		</dependency>`
+		<artifactId>guice-assistedinject</artifactId>
+		<version>4.1.0</version>
+	</dependency>
+````
 
  - Guice HOW-TOs, illustrated in the application
 	 - Linked Bindings
@@ -33,5 +36,5 @@ What can you find in this project?
 	 - Creating Object Factories
 	 - Assisted Injections
 	 
- - Simulation of a Message Client
-	 - [Entry Point - Simple JUnit Test Case](https://github.com/Iretha/tutorials/blob/master/example-google-guice/src/test/java/com/smdev/guice/msg/MessageAppTest.java)
+ - Entry Point
+	 - [Message Client](https://github.com/Iretha/tutorials/blob/master/example-google-guice/src/test/java/com/smdev/guice/msg/MessageAppTest.java)
