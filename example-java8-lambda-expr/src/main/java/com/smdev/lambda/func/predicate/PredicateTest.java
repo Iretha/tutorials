@@ -1,4 +1,4 @@
-package com.smdev.lambda.predicate;
+package com.smdev.lambda.func.predicate;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -8,6 +8,10 @@ import com.smdev.lambda.Person;
 import com.smdev.lambda.util.Util;
 
 /**
+ * Predicate can be used in all the contexts where an object needs to be evaluated for a given test
+ * condition and a boolean value needs to be returned based on whether the condition was
+ * successfully met or not.
+ * 
  * Example:
  * {@link http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html}
  *
