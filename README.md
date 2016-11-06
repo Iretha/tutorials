@@ -8,3 +8,7 @@ Examples of different Java related technologies
 - **BDD** (Behavior Driven Development)
 
 > - [**example-bdd-cucumber**](https://github.com/Iretha/tutorials/tree/master/example-bdd-cucumber) - Example project with [Gradle](https://gradle.org/getting-started-gradle-java/), [Cucumber](https://cucumber.io/docs/reference/jvm#java), [JUnit](http://junit.org/junit4/)
+
+- **Java 8**
+
+> - [**example-java8-lambda-expr**](https://github.com/Iretha/tutorials/tree/master/example-java8-lambda-expr)
