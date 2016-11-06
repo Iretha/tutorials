@@ -10,13 +10,13 @@ import com.smdev.lambda.Person;
  * 
  * @author Ireth
  */
-public class SuplierTest {
+public class SupplierTest {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Supplier<Person> personGenerator = SuplierTest::personMaker;
+		Supplier<Person> personGenerator = SupplierTest::personMaker;
 
 		for (int i = 0; i < 10; i++) {
 			System.out.println("#" + i + ": " + personGenerator.get());

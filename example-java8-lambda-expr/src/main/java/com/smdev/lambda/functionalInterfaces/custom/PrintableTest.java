@@ -9,10 +9,7 @@ public class PrintableTest {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		Printable p = (s) -> {
-			System.out.println(s);
-			return s;
-		};
+		Printable p = (s) -> System.out.println(s);
 
 		p.print("AA");
 		p.print("BB");

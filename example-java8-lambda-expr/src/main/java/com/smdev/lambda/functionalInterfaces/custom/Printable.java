@@ -6,5 +6,12 @@ package com.smdev.lambda.functionalInterfaces.custom;
 @FunctionalInterface
 public interface Printable {
 
-	String print(String s) throws Exception;
+	/**
+	 * Function Descriptor is a term used to describe the signature of the abstract method of a
+	 * Functional Interface: (String) -> void example
+	 * 
+	 * @param s
+	 * @throws Exception
+	 */
+	void print(String s) throws Exception;
 }
