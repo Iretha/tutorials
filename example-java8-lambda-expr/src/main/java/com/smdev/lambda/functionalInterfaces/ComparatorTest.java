@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.smdev.lambda.functionalInterfaces;
 
 import java.net.URISyntaxException;
@@ -12,6 +9,9 @@ import com.smdev.lambda.Person;
 import com.smdev.lambda.util.Util;
 
 /**
+ * Example:
+ * {@link http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html}
+ * 
  * @author Ireth
  */
 public class ComparatorTest {

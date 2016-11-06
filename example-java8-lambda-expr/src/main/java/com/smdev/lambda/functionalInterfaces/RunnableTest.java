@@ -1,9 +1,9 @@
-/**
- * 
- */
 package com.smdev.lambda.functionalInterfaces;
 
 /**
+ * Example:
+ * {@link http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html}
+ * 
  * @author Ireth
  */
 public class RunnableTest {

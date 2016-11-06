@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.smdev.lambda.function;
 
 import java.net.URISyntaxException;
@@ -11,6 +8,9 @@ import com.smdev.lambda.Person;
 import com.smdev.lambda.util.Util;
 
 /**
+ * Example:
+ * {@link http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html}
+ * 
  * @author Ireth
  */
 public class FunctionTest {
@@ -24,7 +24,8 @@ public class FunctionTest {
 
 		Function<Person, String> firstLast = p -> p.getFirstName() + " " + p.getSurName();
 		Function<Person, String> lastFirst = p -> p.getSurName() + " " + p.getFirstName();
-		list.forEach(p -> System.out.println(p.apply(firstLast) + " <-> " + p.apply(lastFirst)));
+		list.forEach(
+				p -> System.out.println(p.applyFunc(firstLast) + " <-> " + p.applyFunc(lastFirst)));
 	}
 
 }

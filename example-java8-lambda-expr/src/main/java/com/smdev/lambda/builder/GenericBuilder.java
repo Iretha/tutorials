@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.smdev.lambda.builder;
 
 import java.util.ArrayList;
@@ -10,8 +7,9 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
+ * Generic builder of different types
+ * 
  * @author Ireth
- *
  */
 public class GenericBuilder<T> {
 

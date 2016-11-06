@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.smdev.lambda;
 
 import java.util.function.Function;
@@ -53,15 +50,19 @@ public class Person {
 		this.surName = surName;
 	}
 
-	/* (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString() */
+	/* @see java.lang.Object#toString() */
 	@Override
 	public String toString() {
 		return this.firstName + " " + this.surName;
 	}
 
-	public String apply(Function<Person, String> f) {
+	/**
+	 * Passing functions as params
+	 * 
+	 * @param f
+	 * @return String
+	 */
+	public String applyFunc(Function<Person, String> f) {
 		return f.apply(this);
 	}
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.smdev.lambda.util;
 
 import java.io.IOException;
@@ -17,14 +14,29 @@ import com.smdev.lambda.Person;
 
 /**
  * @author Ireth
- *
  */
 public class Util {
 
+	/**
+	 * Reads file from resources dir and returns it's path
+	 * 
+	 * @param clz
+	 * @param fileName
+	 * @return path
+	 * @throws URISyntaxException
+	 */
 	public static Path get(Class<?> clz, String fileName) throws URISyntaxException {
 		return Paths.get(clz.getClassLoader().getResource(fileName).toURI());
 	}
 
+	/**
+	 * Returns list of persons from file in resources dir
+	 * 
+	 * @param clz
+	 * @param fileName
+	 * @return list of persons
+	 * @throws URISyntaxException
+	 */
 	public static List<Person> create(Class<?> clz, String fileName) throws URISyntaxException {
 		Path path = get(clz, fileName);
 		List<Person> p = new ArrayList<>();
@@ -37,8 +49,6 @@ public class Util {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// TODO
 		return p;
 	}
 }
