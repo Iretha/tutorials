@@ -21,10 +21,27 @@ public class Person {
 	}
 
 	/**
+	 * Passing functions as params
+	 *
+	 * @param f
+	 * @return String
+	 */
+	public String applyFunc(Function<Person, String> f) {
+		return f.apply(this);
+	}
+
+	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
 		return this.firstName;
+	}
+
+	/**
+	 * @return the surName
+	 */
+	public String getSurName() {
+		return this.surName;
 	}
 
 	/**
@@ -33,13 +50,6 @@ public class Person {
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-	/**
-	 * @return the surName
-	 */
-	public String getSurName() {
-		return this.surName;
 	}
 
 	/**
@@ -54,15 +64,5 @@ public class Person {
 	@Override
 	public String toString() {
 		return this.firstName + " " + this.surName;
-	}
-
-	/**
-	 * Passing functions as params
-	 * 
-	 * @param f
-	 * @return String
-	 */
-	public String applyFunc(Function<Person, String> f) {
-		return f.apply(this);
 	}
 }

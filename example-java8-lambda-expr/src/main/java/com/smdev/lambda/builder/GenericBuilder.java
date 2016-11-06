@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 /**
  * Generic builder of different types
- * 
+ *
  * @author Ireth
  */
 public class GenericBuilder<T> {

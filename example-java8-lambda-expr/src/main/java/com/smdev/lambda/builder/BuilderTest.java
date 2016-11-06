@@ -4,7 +4,7 @@ import com.smdev.lambda.Person;
 
 /**
  * Example usage of Builder
- * 
+ *
  * @author Ireth
  */
 public class BuilderTest {

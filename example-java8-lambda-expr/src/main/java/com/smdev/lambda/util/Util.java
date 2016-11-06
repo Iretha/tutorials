@@ -18,20 +18,8 @@ import com.smdev.lambda.Person;
 public class Util {
 
 	/**
-	 * Reads file from resources dir and returns it's path
-	 * 
-	 * @param clz
-	 * @param fileName
-	 * @return path
-	 * @throws URISyntaxException
-	 */
-	public static Path get(Class<?> clz, String fileName) throws URISyntaxException {
-		return Paths.get(clz.getClassLoader().getResource(fileName).toURI());
-	}
-
-	/**
 	 * Returns list of persons from file in resources dir
-	 * 
+	 *
 	 * @param clz
 	 * @param fileName
 	 * @return list of persons
@@ -50,5 +38,17 @@ public class Util {
 			e.printStackTrace();
 		}
 		return p;
+	}
+
+	/**
+	 * Reads file from resources dir and returns it's path
+	 *
+	 * @param clz
+	 * @param fileName
+	 * @return path
+	 * @throws URISyntaxException
+	 */
+	public static Path get(Class<?> clz, String fileName) throws URISyntaxException {
+		return Paths.get(clz.getClassLoader().getResource(fileName).toURI());
 	}
 }
