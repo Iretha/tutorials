@@ -28,16 +28,7 @@ What can you find in this project?
 ````
 
  - Spring HOW-TOs, illustrated in the application
-	 - Linked Bindings
-	 - Binding Annotations
-	 - Custom Annotations
-	 - Named Annotations
-	 - Instance Bindings
-	 - Constructor Bindings
-	 - Setter Bindings
-	 - Bindings depending on the module
-	 - Creating Object Factories
-	 - Assisted Injections
+	 - TODO
 	 
  - Entry Point
-	 - [Message Client](https://github.com/Iretha/tutorials/blob/master/example-di-spring/src/test/java/com/smdev/guice/msg/MessageAppTest.java)
+	 - [Message Client](https://github.com/Iretha/tutorials/blob/master/example-di-spring/src/test/java/com/smdev/spring/msg/MessageAppTest.java)
