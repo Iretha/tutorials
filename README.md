@@ -4,6 +4,7 @@ Examples of different Java related technologies
 - **IoC** (Inversion of Control) and **DI** (Dependency Injection)
 
 > - [**example-google-guice**](https://github.com/Iretha/tutorials/tree/master/example-google-guice) - Example project with [Maven](https://maven.apache.org/), [Google Guice DI framework](https://github.com/google/guice/wiki/GettingStarted)
+> - [**example-di-spring**](https://github.com/Iretha/tutorials/tree/master/example-di-spring) - Example project with [Maven](https://maven.apache.org/), [Spring DI framework](https://spring.io/guides)
 
 - **BDD** (Behavior Driven Development)
 
