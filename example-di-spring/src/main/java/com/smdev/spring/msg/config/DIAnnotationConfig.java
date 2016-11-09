@@ -20,6 +20,8 @@ import com.smdev.spring.msg.service.mail.MailMessage;
 import com.smdev.spring.msg.service.mail.MailUser;
 
 /**
+ * Spring configuration
+ *
  * @author Ireth
  */
 @Configuration
@@ -27,16 +29,32 @@ import com.smdev.spring.msg.service.mail.MailUser;
 @PropertySource("classpath:props.properties")
 public class DIAnnotationConfig {
 
+	/**
+	 * Property placeholder configurer needed to process @Value annotations
+	 */
 	@Bean
-	@Scope("prototype")
-	public User getUser(Type type, String userName, String name) {
-		if (type.equals(Type.FB)) {
-			return new FBUser(userName, name);
-		} else {
-			return new MailUser(userName, name);
-		}
+	public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
 	}
 
+	/**
+	 * @return {@linkplain FileSystemBackupService}
+	 */
+	@Bean
+	@Scope("singleton")
+	public BackupService getBackupService() {
+		return new FileSystemBackupService();
+	}
+
+	/**
+	 * Creates new instance of a message, depending on the type - FB or Mail
+	 *
+	 * @param type
+	 * @param recipients
+	 * @param sender
+	 * @param text
+	 * @return message
+	 */
 	@Bean
 	@Scope("prototype")
 	public Message getMessage(Type type, List<User> recipients, User sender, String text) {
@@ -47,17 +65,21 @@ public class DIAnnotationConfig {
 		}
 	}
 
-	@Bean
-	@Scope("singleton")
-	public BackupService getBackupService() {
-		return new FileSystemBackupService();
-	}
-
 	/**
-	 * Property placeholder configurer needed to process @Value annotations
+	 * Creates new instance of a user, depending on the type - FB or Mail
+	 *
+	 * @param type
+	 * @param userName
+	 * @param name
+	 * @return user
 	 */
 	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
+	@Scope("prototype")
+	public User getUser(Type type, String userName, String name) {
+		if (type.equals(Type.FB)) {
+			return new FBUser(userName, name);
+		} else {
+			return new MailUser(userName, name);
+		}
 	}
 }

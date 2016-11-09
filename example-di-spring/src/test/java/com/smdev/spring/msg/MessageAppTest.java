@@ -10,19 +10,17 @@ import com.smdev.spring.msg.domain.Type;
 import com.smdev.spring.msg.domain.msg.Message;
 import com.smdev.spring.msg.domain.user.User;
 
+/**
+ * @author Ireth
+ */
 public class MessageAppTest {
 
-	@Test
-	public void testSendFBMessage_Annot_Config() {
-		sendMessage_Annot_config(Type.FB);
-	}
-
-	@Test
-	public void testSendMailMessage_Annot_Config() {
-		sendMessage_Annot_config(Type.MAIL);
-	}
-
-	private void sendMessage_Annot_config(Type type) {
+	/**
+	 * Sending fake messages by type
+	 * 
+	 * @param type
+	 */
+	private static void sendMessage(Type type) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
 				DIAnnotationConfig.class);
 		MessageApp app = context.getBean(MessageApp.class);
@@ -39,6 +37,18 @@ public class MessageAppTest {
 		} finally {
 			context.close(); // close the context
 		}
+	}
+
+	/** Sending Facebook message */
+	@Test
+	public void testSendFBMessage() {
+		sendMessage(Type.FB);
+	}
+
+	/** Sending E-Mail */
+	@Test
+	public void testSendMailMessage() {
+		sendMessage(Type.MAIL);
 	}
 
 }

@@ -22,15 +22,15 @@ public class MessageApp {
 	/** Message backup service */
 	private BackupService backupService = null;
 
-	/** Max attempts to try sending the message */
-	@Value("${MAX_RETRY_ATTEMPTS:2}")
-	private String MAX_RETRY_ATTEMPTS = null;
-
 	/** FB Message service */
 	private MessageService fbMessageService;
 
 	/** Mail Message service */
 	private MessageService mailMessageService;
+
+	/** Max attempts to try sending the message */
+	@Value("${MAX_RETRY_ATTEMPTS:2}")
+	private String MAX_RETRY_ATTEMPTS = null;
 
 	/**
 	 * Constructor injection example
