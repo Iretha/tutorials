@@ -28,7 +28,13 @@ What can you find in this project?
 ````
 
  - Spring HOW-TOs, illustrated in the application
-	 - TODO
+	 - Annotation based configuration
+	 - Different Bean Scopes
+	 - Scanning packages for components
+	 - Using *.properties files for external configuration
+	 - Injecting values from *.properties files by property key
+	 - Conditional object creation - passing parameters
+	 - Injection by resource name (picking the correct implementation class)
 	 
  - Entry Point
 	 - [Message Client](https://github.com/Iretha/tutorials/blob/master/example-di-spring/src/test/java/com/smdev/spring/msg/MessageAppTest.java)
