@@ -17,7 +17,7 @@ import com.smdev.spring.msg.service.MessageService;
  * @author Ireth
  */
 @Component
-public class MessageConfigWithAnnotApp {
+public class MessageApp {
 
 	/** Message backup service */
 	private BackupService backupService = null;
@@ -26,10 +26,10 @@ public class MessageConfigWithAnnotApp {
 	@Value("${MAX_RETRY_ATTEMPTS:2}")
 	private String MAX_RETRY_ATTEMPTS = null;
 
-	/** Message service */
+	/** FB Message service */
 	private MessageService fbMessageService;
 
-	/** Message service */
+	/** Mail Message service */
 	private MessageService mailMessageService;
 
 	/**
@@ -38,7 +38,7 @@ public class MessageConfigWithAnnotApp {
 	 * @param backupService
 	 */
 	@Autowired
-	public MessageConfigWithAnnotApp(BackupService backupService) {
+	public MessageApp(BackupService backupService) {
 		super();
 		this.backupService = backupService;
 	}

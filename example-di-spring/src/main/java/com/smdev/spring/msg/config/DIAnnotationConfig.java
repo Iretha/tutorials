@@ -24,7 +24,7 @@ import com.smdev.spring.msg.service.mail.MailUser;
  */
 @Configuration
 @ComponentScan(value = { "com.smdev.spring.msg" })
-@PropertySource("classpath:annotConfig.properties")
+@PropertySource("classpath:props.properties")
 public class DIAnnotationConfig {
 
 	@Bean

@@ -25,7 +25,7 @@ public class MessageAppTest {
 	private void sendMessage_Annot_config(Type type) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
 				DIAnnotationConfig.class);
-		MessageConfigWithAnnotApp app = context.getBean(MessageConfigWithAnnotApp.class);
+		MessageApp app = context.getBean(MessageApp.class);
 
 		User sender = (User) context.getBean("getUser", type, "@Sender", "Sender");
 		User recipient1 = (User) context.getBean("getUser", type, "@Rec1", "Rec1");
