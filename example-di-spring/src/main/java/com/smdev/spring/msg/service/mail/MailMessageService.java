@@ -2,6 +2,8 @@ package com.smdev.spring.msg.service.mail;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Component;
+
 import com.smdev.spring.msg.domain.msg.Message;
 import com.smdev.spring.msg.service.ActivityService;
 import com.smdev.spring.msg.service.MessageService;
@@ -11,6 +13,7 @@ import com.smdev.spring.msg.service.MessageService;
  *
  * @author Ireth
  */
+@Component("mailMessageService")
 public class MailMessageService implements MessageService {
 
 	@Resource(name = "mailActivity")
@@ -18,7 +21,7 @@ public class MailMessageService implements MessageService {
 
 	@Override
 	public boolean send(Message message) {
-		this.mailActivity.track("Sending message " + message + "...");
+		this.mailActivity.track("Sending Mail message " + message + "...");
 		// TODO custom implementation
 
 		return true;

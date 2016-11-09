@@ -1,9 +1,12 @@
 package com.smdev.spring.msg;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.smdev.spring.msg.domain.Type;
 import com.smdev.spring.msg.domain.msg.Message;
 import com.smdev.spring.msg.service.BackupService;
 import com.smdev.spring.msg.service.MessageService;
@@ -24,7 +27,10 @@ public class MessageConfigWithAnnotApp {
 	private String MAX_RETRY_ATTEMPTS = null;
 
 	/** Message service */
-	private MessageService messageService;
+	private MessageService fbMessageService;
+
+	/** Message service */
+	private MessageService mailMessageService;
 
 	/**
 	 * Constructor injection example
@@ -32,9 +38,9 @@ public class MessageConfigWithAnnotApp {
 	 * @param backupService
 	 */
 	@Autowired
-	public MessageConfigWithAnnotApp(MessageService messageService) {
+	public MessageConfigWithAnnotApp(BackupService backupService) {
 		super();
-		this.messageService = messageService;
+		this.backupService = backupService;
 	}
 
 	/**
@@ -44,26 +50,41 @@ public class MessageConfigWithAnnotApp {
 	 * @return boolean
 	 * @throws MessageAppException
 	 */
-	public boolean sendMessage(Message message) throws MessageAppException {
+	public boolean sendMessage(Type type, Message message) throws MessageAppException {
 		this.backupService.backup(message);
 
 		boolean sent = false;
 		int attempts = 1;
-		sent = this.messageService.send(message);
+
+		MessageService messageService = (type == Type.FB) ? this.fbMessageService
+				: this.mailMessageService;
+
+		sent = messageService.send(message);
 		while (!sent && attempts <= Integer.valueOf(this.MAX_RETRY_ATTEMPTS)) {
-			sent = this.messageService.send(message);
+			sent = messageService.send(message);
 			attempts++;
 		}
 		return sent;
 	}
 
 	/**
-	 * Setter injection example
-	 *
-	 * @param service
+	 * @param fbMessageService
+	 *            the fbMessageService to set
 	 */
 	@Autowired
-	public void setBackupService(BackupService service) {
-		this.backupService = service;
+	@Resource(name = "fbMessageService")
+	public void setFbMessageService(MessageService fbMessageService) {
+		this.fbMessageService = fbMessageService;
 	}
+
+	/**
+	 * @param mailMessageService
+	 *            the mailMessageService to set
+	 */
+	@Autowired
+	@Resource(name = "mailMessageService")
+	public void setMailMessageService(MessageService mailMessageService) {
+		this.mailMessageService = mailMessageService;
+	}
+
 }
