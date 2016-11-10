@@ -13,3 +13,7 @@ Examples of different Java related technologies
 - **Java 8**
 
 > - [**example-java8-lambda-expr**](https://github.com/Iretha/tutorials/tree/master/example-java8-lambda-expr)
+
+- **ORM** (Object-Relational Mapping)
+
+> - [**example-orm-hibernate-hsqldb**](https://github.com/Iretha/tutorials/tree/master/example-orm-hibernate-hsqldb) - Example project with [Maven](https://maven.apache.org/), [Hibernate](http://hibernate.org/), [HyperSQL aka HSQLDB](http://hsqldb.org/)
