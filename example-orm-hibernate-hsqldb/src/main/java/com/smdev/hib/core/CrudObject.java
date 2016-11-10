@@ -1,5 +1,7 @@
 package com.smdev.hib.core;
 
+import java.lang.reflect.Field;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -136,6 +138,29 @@ public abstract class CrudObject<Entity extends CrudEntity> implements CrudOpera
 		}
 
 		load(getEntity().getClass(), getEntity().getId());
+	}
+
+	/* @see java.lang.Object#toString() */
+	@Override
+	public String toString() {
+		StringBuilder b = new StringBuilder();
+		b.append("[").append(this.entity.getClass().getSimpleName()).append(":");
+		Field[] fields = null;
+		Object fieldValue = null;
+		for (Class<?> clz = this.entity.getClass(); clz != null; clz = clz.getSuperclass()) {
+			fields = clz.getDeclaredFields();
+			for (Field field : fields) {
+				field.setAccessible(true);
+				try {
+					fieldValue = field.get(this.entity);
+					b.append(" ").append(field.getName()).append("=").append(fieldValue)
+							.append(";");
+				} catch (Exception e) {
+					// not important here
+				}
+			}
+		}
+		return b.append("]").toString();
 	}
 
 	/* @see com.smdev.hib.domain.CRUD#update() */

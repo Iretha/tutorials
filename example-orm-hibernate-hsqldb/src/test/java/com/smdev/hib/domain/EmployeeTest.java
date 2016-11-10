@@ -18,12 +18,6 @@ import com.smdev.hib.entity.EmployeeEntity;
  */
 public class EmployeeTest extends BaseHibernateTest {
 
-	@Rule
-	public ExpectedException thrown = ExpectedException.none();
-
-	/**
-	 * @return
-	 */
 	private static EmployeeEntity createEntity(String str) {
 		EmployeeEntity entity = new EmployeeEntity();
 		entity.setEmail(str + "@gmail.com");
@@ -33,6 +27,9 @@ public class EmployeeTest extends BaseHibernateTest {
 	}
 
 	private Employee employee = null;
+
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
 
 	@Override
 	@Before
@@ -51,6 +48,28 @@ public class EmployeeTest extends BaseHibernateTest {
 	public void testCreateEmployee() {
 		Integer id = this.employee.getId();
 		assertNotNull(id);
+
+		System.out.println(this.employee);
+	}
+
+	@SuppressWarnings("unused")
+	@Test
+	public void testDeleteEmployee() {
+		Integer id = this.employee.getId();
+		try {
+			this.employee.delete();
+		} catch (AppException e) {
+			fail(e.getMessage());
+		}
+
+		try {
+			new Employee(id);
+			this.thrown.expect(AppException.class);
+			this.thrown.expectMessage("Entity with ID=" + id + " not found!");
+		} catch (AppException e) {
+			// expected
+		}
+
 	}
 
 	@Test
@@ -88,25 +107,5 @@ public class EmployeeTest extends BaseHibernateTest {
 		} catch (AppException e) {
 			fail(e.getMessage());
 		}
-	}
-
-	@Test
-	public void testDeleteEmployee() {
-		Integer id = this.employee.getId();
-		try {
-			this.employee.delete();
-		} catch (AppException e) {
-			fail(e.getMessage());
-		}
-
-		try {
-			@SuppressWarnings("unused")
-			Employee fromDb = new Employee(id);
-			this.thrown.expect(AppException.class);
-			this.thrown.expectMessage("Entity with ID=" + id + " not found!");
-		} catch (AppException e) {
-			// expected
-		}
-
 	}
 }

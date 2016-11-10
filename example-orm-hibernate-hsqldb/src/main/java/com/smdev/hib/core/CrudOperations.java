@@ -9,7 +9,7 @@ public interface CrudOperations {
 
 	/**
 	 * Inserts entry in DB
-	 * 
+	 *
 	 * @return id
 	 * @throws AppException
 	 */
