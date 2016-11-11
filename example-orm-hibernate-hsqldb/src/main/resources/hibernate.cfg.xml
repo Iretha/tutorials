@@ -9,9 +9,11 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
 		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.connection.password">1234</property>
-		<property name="hibernate.connection.url">jdbc:hsqldb:mem:.example</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.pool_size">10</property>
+		<property name="hibernate.connection.autocommit">true</property>
+		<property name="hibernate.connection.url">jdbc:hsqldb:file:db/testdb;shutdown=true</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
 	</session-factory>
-	
+
 </hibernate-configuration>
