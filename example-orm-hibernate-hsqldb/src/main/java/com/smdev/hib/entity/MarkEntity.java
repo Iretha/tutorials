@@ -90,6 +90,13 @@ public class MarkEntity implements CrudEntity {
 	}
 
 	/**
+	 * @return the teacher
+	 */
+	public TeacherEntity getTeacher() {
+		return this.teacher;
+	}
+
+	/**
 	 * @param course
 	 *            the course to set
 	 */
@@ -128,13 +135,6 @@ public class MarkEntity implements CrudEntity {
 	 */
 	public void setStudent(StudentEntity student) {
 		this.student = student;
-	}
-
-	/**
-	 * @return the teacher
-	 */
-	public TeacherEntity getTeacher() {
-		return this.teacher;
 	}
 
 	/**

@@ -1,6 +1,5 @@
 package com.smdev.hib.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,11 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Type;
 
 import com.smdev.hib.core.CrudEntity;
 
@@ -28,27 +27,20 @@ import com.smdev.hib.core.CrudEntity;
 
 @Entity
 @DynamicUpdate
-@Table(name = "courses", uniqueConstraints = { @UniqueConstraint(columnNames = "ID"),
-		@UniqueConstraint(columnNames = "code") })
+@Table(name = "courses", uniqueConstraints = { @UniqueConstraint(columnNames = "ID") })
 public class CourseEntity implements CrudEntity {
 
 	/** */
 	private static final long serialVersionUID = -8686776524391627300L;
 
-	@Column(name = "code", unique = true, nullable = false, length = 100)
-	private String code;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "details_ID", unique = true, nullable = false)
+	private CourseDetailsEntity details;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
-
-	@Column(name = "name", unique = false, nullable = false, length = 100)
-	private String name;
-
-	@Column(name = "start_date", unique = false, nullable = true)
-	@Type(type = "date")
-	private Date startDate;
 
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinTable(name = "courses_students", joinColumns = {
@@ -67,10 +59,10 @@ public class CourseEntity implements CrudEntity {
 	private List<TeacherEntity> teachers;
 
 	/**
-	 * @return the code
+	 * @return the details
 	 */
-	public String getCode() {
-		return this.code;
+	public CourseDetailsEntity getDetails() {
+		return this.details;
 	}
 
 	/**
@@ -79,20 +71,6 @@ public class CourseEntity implements CrudEntity {
 	@Override
 	public Integer getId() {
 		return this.id;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return this.name;
-	}
-
-	/**
-	 * @return the startDate
-	 */
-	public Date getStartDate() {
-		return this.startDate;
 	}
 
 	/**
@@ -110,11 +88,18 @@ public class CourseEntity implements CrudEntity {
 	}
 
 	/**
-	 * @param code
-	 *            the code to set
+	 * @return the teachers
 	 */
-	public void setCode(String code) {
-		this.code = code;
+	public List<TeacherEntity> getTeachers() {
+		return this.teachers;
+	}
+
+	/**
+	 * @param details
+	 *            the details to set
+	 */
+	public void setDetails(CourseDetailsEntity details) {
+		this.details = details;
 	}
 
 	/**
@@ -124,22 +109,6 @@ public class CourseEntity implements CrudEntity {
 	@Override
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @param startDate
-	 *            the startDate to set
-	 */
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
 	}
 
 	/**
@@ -156,13 +125,6 @@ public class CourseEntity implements CrudEntity {
 	 */
 	public void setSubject(SubjectEntity subject) {
 		this.subject = subject;
-	}
-
-	/**
-	 * @return the teachers
-	 */
-	public List<TeacherEntity> getTeachers() {
-		return this.teachers;
 	}
 
 	/**

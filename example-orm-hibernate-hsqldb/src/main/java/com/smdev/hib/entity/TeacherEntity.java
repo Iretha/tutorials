@@ -29,6 +29,10 @@ public class TeacherEntity implements CrudEntity {
 	/** */
 	private static final long serialVersionUID = -6563708678295022431L;
 
+	@OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID", nullable = true)
+	private List<CourseEntity> courses;
+
 	@Column(name = "first_name", unique = false, nullable = false, length = 100)
 	private String firstName;
 
@@ -39,10 +43,6 @@ public class TeacherEntity implements CrudEntity {
 
 	@Column(name = "last_name", unique = false, nullable = false, length = 100)
 	private String lastName;
-
-	@OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID", nullable = true)
-	private List<CourseEntity> courses;
 
 	/**
 	 * @return the firstName
