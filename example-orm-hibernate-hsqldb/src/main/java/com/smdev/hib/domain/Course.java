@@ -1,13 +1,13 @@
 package com.smdev.hib.domain;
 
 import com.smdev.hib.AppException;
-import com.smdev.hib.core.CrudObject;
+import com.smdev.hib.core.DomainObject;
 import com.smdev.hib.entity.CourseEntity;
 
 /**
  * @author Ireth
  */
-public class Course extends CrudObject<CourseEntity> {
+public class Course extends DomainObject<CourseEntity> {
 
 	public Course(CourseEntity entity) {
 		super(entity);

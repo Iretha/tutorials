@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.smdev.hib.core.CrudEntity;
+import com.smdev.hib.core.DBEntity;
 
 /**
  * @author Ireth
@@ -25,7 +25,7 @@ import com.smdev.hib.core.CrudEntity;
 @Entity
 @DynamicUpdate
 @Table(name = "students", uniqueConstraints = { @UniqueConstraint(columnNames = "ID") })
-public class StudentEntity implements CrudEntity {
+public class StudentEntity implements DBEntity {
 
 	/** */
 	private static final long serialVersionUID = 9115140792403717766L;
@@ -55,6 +55,13 @@ public class StudentEntity implements CrudEntity {
 	 */
 	public List<CourseEntity> getCourses() {
 		return this.courses;
+	}
+
+	/**
+	 * @return the facultyNo
+	 */
+	public String getFacultyNo() {
+		return this.facultyNo;
 	}
 
 	/**
@@ -88,6 +95,14 @@ public class StudentEntity implements CrudEntity {
 	}
 
 	/**
+	 * @param facultyNo
+	 *            the facultyNo to set
+	 */
+	public void setFacultyNo(String facultyNo) {
+		this.facultyNo = facultyNo;
+	}
+
+	/**
 	 * @param firstName
 	 *            the firstName to set
 	 */
@@ -110,21 +125,6 @@ public class StudentEntity implements CrudEntity {
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	/**
-	 * @return the facultyNo
-	 */
-	public String getFacultyNo() {
-		return this.facultyNo;
-	}
-
-	/**
-	 * @param facultyNo
-	 *            the facultyNo to set
-	 */
-	public void setFacultyNo(String facultyNo) {
-		this.facultyNo = facultyNo;
 	}
 
 }

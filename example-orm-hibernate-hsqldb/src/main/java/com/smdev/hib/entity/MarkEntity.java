@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.smdev.hib.core.CrudEntity;
+import com.smdev.hib.core.DBEntity;
 
 /**
  * @author Ireth
@@ -25,7 +25,7 @@ import com.smdev.hib.core.CrudEntity;
 @Entity
 @DynamicUpdate
 @Table(name = "marks", uniqueConstraints = { @UniqueConstraint(columnNames = "ID") })
-public class MarkEntity implements CrudEntity {
+public class MarkEntity implements DBEntity {
 
 	/** */
 	private static final long serialVersionUID = -4593497558595353195L;

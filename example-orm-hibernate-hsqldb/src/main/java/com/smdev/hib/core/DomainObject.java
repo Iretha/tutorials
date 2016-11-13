@@ -9,9 +9,11 @@ import com.smdev.hib.AppException;
 import com.smdev.hib.HibernateSessionFactory;
 
 /**
+ * Represents a Domain Object with it's base CRUD operations.
+ * 
  * @author Ireth
  */
-public abstract class CrudObject<Entity extends CrudEntity> {
+public abstract class DomainObject<Entity extends DBEntity> {
 
 	/** Hibernate entity */
 	private Entity entity;
@@ -21,7 +23,7 @@ public abstract class CrudObject<Entity extends CrudEntity> {
 	 * @param id
 	 * @throws AppException
 	 */
-	public CrudObject(Class<?> clz, Integer id) throws AppException {
+	public DomainObject(Class<?> clz, Integer id) throws AppException {
 		super();
 		load(clz, id);
 	}
@@ -29,7 +31,7 @@ public abstract class CrudObject<Entity extends CrudEntity> {
 	/**
 	 * @param entity
 	 */
-	public CrudObject(Entity entity) {
+	public DomainObject(Entity entity) {
 		super();
 		this.entity = entity;
 	}

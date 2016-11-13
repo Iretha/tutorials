@@ -3,9 +3,11 @@ package com.smdev.hib.core;
 import java.io.Serializable;
 
 /**
+ * Represents an entity with an ID column.
+ * 
  * @author Ireth
  */
-public interface CrudEntity extends Serializable {
+public interface DBEntity extends Serializable {
 	/** @return unique identifier */
 	Integer getId();
 
