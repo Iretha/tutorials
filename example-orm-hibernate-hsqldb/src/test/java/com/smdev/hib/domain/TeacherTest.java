@@ -5,24 +5,24 @@ import org.junit.Test;
 
 import com.smdev.hib.AppException;
 import com.smdev.hib.BaseHibernateTest;
-import com.smdev.hib.entity.SubjectEntity;
+import com.smdev.hib.entity.TeacherEntity;
 
 /**
  * @author Ireth
  */
-public class TestSubject extends BaseHibernateTest {
+public class TeacherTest extends BaseHibernateTest {
 
 	@Test
 	public void testCreate() {
-		SubjectEntity entity = new SubjectEntity();
-		entity.setName("English");
+		TeacherEntity entity = new TeacherEntity();
+		entity.setFirstName("Franco");
+		entity.setLastName("Brown");
 
-		Subject domain = new Subject(entity);
+		Teacher domain = new Teacher(entity);
 		try {
 			domain.create();
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
 	}
-
 }

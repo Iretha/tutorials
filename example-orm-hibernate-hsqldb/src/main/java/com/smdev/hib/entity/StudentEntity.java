@@ -112,4 +112,19 @@ public class StudentEntity implements CrudEntity {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * @return the facultyNo
+	 */
+	public String getFacultyNo() {
+		return this.facultyNo;
+	}
+
+	/**
+	 * @param facultyNo
+	 *            the facultyNo to set
+	 */
+	public void setFacultyNo(String facultyNo) {
+		this.facultyNo = facultyNo;
+	}
+
 }
