@@ -10,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -29,8 +30,10 @@ public class TeacherEntity implements CrudEntity {
 	/** */
 	private static final long serialVersionUID = -6563708678295022431L;
 
-	@OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID", nullable = true)
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@JoinTable(name = "courses_teachers", joinColumns = {
+			@JoinColumn(name = "course_ID", nullable = true, updatable = true) }, inverseJoinColumns = {
+					@JoinColumn(name = "teacher_ID", nullable = true, updatable = true) })
 	private List<CourseEntity> courses;
 
 	@Column(name = "first_name", unique = false, nullable = false, length = 100)
