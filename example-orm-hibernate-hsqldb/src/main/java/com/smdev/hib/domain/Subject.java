@@ -17,4 +17,10 @@ public class Subject extends CrudObject<SubjectEntity> {
 		super(entity);
 	}
 
+	/* @see com.smdev.hib.core.CrudObject#create() */
+	@Override
+	public Integer create() throws AppException {
+		return super.create();
+	}
+
 }

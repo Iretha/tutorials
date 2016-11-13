@@ -17,4 +17,10 @@ public class Mark extends CrudObject<MarkEntity> {
 		super(entity);
 	}
 
+	/* @see com.smdev.hib.core.CrudObject#create() */
+	@Override
+	public Integer create() throws AppException {
+		return super.create();
+	}
+
 }

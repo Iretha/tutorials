@@ -17,4 +17,9 @@ public class CourseDetails extends CrudObject<CourseDetailsEntity> {
 		super(CourseDetailsEntity.class, id);
 	}
 
+	/* @see com.smdev.hib.core.CrudObject#create() */
+	@Override
+	public Integer create() throws AppException {
+		return super.create();
+	}
 }

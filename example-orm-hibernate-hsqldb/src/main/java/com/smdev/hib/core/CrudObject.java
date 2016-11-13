@@ -11,7 +11,7 @@ import com.smdev.hib.HibernateSessionFactory;
 /**
  * @author Ireth
  */
-public abstract class CrudObject<Entity extends CrudEntity> implements CrudOperations {
+public abstract class CrudObject<Entity extends CrudEntity> {
 
 	/** Hibernate entity */
 	private Entity entity;
@@ -68,9 +68,13 @@ public abstract class CrudObject<Entity extends CrudEntity> implements CrudOpera
 		}
 	}
 
-	/* @see com.smdev.hib.domain.CRUD#create() */
-	@Override
-	public Integer create() throws AppException {
+	/**
+	 * Inserts entry in DB
+	 *
+	 * @return id
+	 * @throws AppException
+	 */
+	protected Integer create() throws AppException {
 		Integer id = null;
 		Session session = HibernateSessionFactory.getInstance().getSession();
 		Transaction tx = null;
@@ -93,8 +97,11 @@ public abstract class CrudObject<Entity extends CrudEntity> implements CrudOpera
 		return id;
 	}
 
-	/* @see com.smdev.hib.domain.CRUD#delete() */
-	@Override
+	/**
+	 * Deletes existing entry from DB
+	 *
+	 * @throws AppException
+	 */
 	public void delete() throws AppException {
 		if (getEntity().getId() == null) {
 			throw new AppException("Entity not persisted!");
@@ -130,8 +137,11 @@ public abstract class CrudObject<Entity extends CrudEntity> implements CrudOpera
 		return getEntity().getId();
 	}
 
-	/* @see com.smdev.hib.domain.CRUD#read() */
-	@Override
+	/**
+	 * Reloads existing entry from DB
+	 *
+	 * @throws AppException
+	 */
 	public void reload() throws AppException {
 		if (getEntity().getId() == null) {
 			throw new AppException("Entity not persisted!");
@@ -163,8 +173,11 @@ public abstract class CrudObject<Entity extends CrudEntity> implements CrudOpera
 		return b.append("]").toString();
 	}
 
-	/* @see com.smdev.hib.domain.CRUD#update() */
-	@Override
+	/**
+	 * Updates existing entry in DB
+	 *
+	 * @throws AppException
+	 */
 	public void update() throws AppException {
 		if (getEntity().getId() == null) {
 			throw new AppException("Entity not persisted!");
