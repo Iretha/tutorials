@@ -9,15 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import com.smdev.hib.core.DBEntry;
 
@@ -32,11 +28,7 @@ public class TeacherEntity implements DBEntry {
 	/** */
 	private static final long serialVersionUID = -6563708678295022431L;
 
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
-	@JoinTable(name = "courses_teachers", joinColumns = {
-			@JoinColumn(name = "course_ID", nullable = true, updatable = true) }, inverseJoinColumns = {
-					@JoinColumn(name = "teacher_ID", nullable = true, updatable = true) })
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "teachers")
 	private List<CourseEntity> courses;
 
 	@Column(name = "first_name", unique = false, nullable = false, length = 100)

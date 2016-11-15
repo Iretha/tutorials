@@ -18,7 +18,7 @@ public class Course extends DomainObject<CourseEntity> {
 	}
 
 	/**
-	 * Adds a teacher
+	 * Adding teacher to the course
 	 *
 	 * @param teacher
 	 * @throws AppException
@@ -29,12 +29,12 @@ public class Course extends DomainObject<CourseEntity> {
 	}
 
 	/**
-	 * Sign up for a course
+	 * Adding a student tothe course
 	 *
 	 * @param student
 	 * @throws AppException
 	 */
-	public void signup(Student student) throws AppException {
+	public void addStudent(Student student) throws AppException {
 		getEntity().getStudents().add(student.getEntity());
 		super.store();
 	}

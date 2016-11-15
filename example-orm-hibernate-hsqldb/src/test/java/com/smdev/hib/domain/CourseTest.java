@@ -27,12 +27,12 @@ public class CourseTest extends BaseHibernateTest {
 	}
 
 	@Test
-	public void testSignup() {
+	public void testAddStudent() {
 		try {
 			Student student = DomainSearch.findById(Student.class, StudentEntity.class, 4);
 
 			Course course = DomainSearch.findById(Course.class, CourseEntity.class, 7);
-			course.signup(student);
+			course.addStudent(student);
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
