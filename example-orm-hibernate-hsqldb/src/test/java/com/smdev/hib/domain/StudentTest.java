@@ -12,7 +12,7 @@ import com.smdev.hib.BaseHibernateTest;
 public class StudentTest extends BaseHibernateTest {
 	@Test
 	public void testStore() {
-		Student domain = createStudent("Tom", "Miller", "123TomMiller");
+		Student domain = createStudent("Tom1", "Miller1", "123Tom1Miller1");
 		try {
 			domain.store();
 			System.out.println(domain);

@@ -4,9 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -30,6 +32,9 @@ public class CourseDetailsEntity implements DBEntry {
 	@Column(name = "code", unique = true, nullable = false, length = 100)
 	private String code;
 
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "details")
+	private CourseEntity course;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
@@ -47,6 +52,13 @@ public class CourseDetailsEntity implements DBEntry {
 	 */
 	public String getCode() {
 		return this.code;
+	}
+
+	/**
+	 * @return the course
+	 */
+	public CourseEntity getCourse() {
+		return this.course;
 	}
 
 	/**
@@ -80,6 +92,14 @@ public class CourseDetailsEntity implements DBEntry {
 	}
 
 	/**
+	 * @param course
+	 *            the course to set
+	 */
+	public void setCourse(CourseEntity course) {
+		this.course = course;
+	}
+
+	/**
 	 * @param id
 	 *            the id to set
 	 */
@@ -103,5 +123,4 @@ public class CourseDetailsEntity implements DBEntry {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-
 }

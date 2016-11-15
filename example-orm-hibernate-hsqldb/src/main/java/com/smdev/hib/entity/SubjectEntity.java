@@ -1,10 +1,15 @@
 package com.smdev.hib.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -24,6 +29,9 @@ public class SubjectEntity implements DBEntry {
 	/** */
 	private static final long serialVersionUID = 258750302448670999L;
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "subject")
+	private List<CourseEntity> courses;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID", unique = true, nullable = false)
@@ -31,6 +39,13 @@ public class SubjectEntity implements DBEntry {
 
 	@Column(name = "name", unique = true, nullable = false, length = 100)
 	private String name;
+
+	/**
+	 * @return the courses
+	 */
+	public List<CourseEntity> getCourses() {
+		return this.courses;
+	}
 
 	/**
 	 * @return the id
@@ -45,6 +60,14 @@ public class SubjectEntity implements DBEntry {
 	 */
 	public String getName() {
 		return this.name;
+	}
+
+	/**
+	 * @param courses
+	 *            the courses to set
+	 */
+	public void setCourses(List<CourseEntity> courses) {
+		this.courses = courses;
 	}
 
 	/**
@@ -63,4 +86,5 @@ public class SubjectEntity implements DBEntry {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 }
