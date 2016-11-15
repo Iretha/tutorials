@@ -25,24 +25,23 @@ import com.smdev.hib.entity.TeacherEntity;
  */
 public abstract class BaseHibernateTest {
 
+	protected static String fake() {
+		return String.valueOf(System.currentTimeMillis());
+	}
+
 	/**
 	 * Used for cleaning created objects
 	 */
 	protected abstract void cleanUp();
 
-	public Course createCourse(Subject subject, CourseDetails details) throws AppException {
-		Course domain = new Course(new CourseEntity());
-		domain.store(subject, details);
-		return domain;
-	}
-
-	public CourseDetails createCourseDetails(String code, String name) {
+	public Course createCourse(Subject subject, String courseName) throws AppException {
 		CourseDetailsEntity cdEntity = new CourseDetailsEntity();
-		cdEntity.setCode(code);
-		cdEntity.setName(name);
+		cdEntity.setCode(fake());
+		cdEntity.setName(courseName);
 		cdEntity.setStartDate(new Date());
 
-		CourseDetails domain = new CourseDetails(cdEntity);
+		Course domain = new Course(new CourseEntity());
+		domain.store(subject, new CourseDetails(cdEntity));
 		return domain;
 	}
 
@@ -54,7 +53,6 @@ public abstract class BaseHibernateTest {
 
 		Student domain = new Student(entity);
 		domain.store();
-
 		return domain;
 	}
 
@@ -74,7 +72,6 @@ public abstract class BaseHibernateTest {
 
 		Teacher domain = new Teacher(entity);
 		domain.store();
-
 		return domain;
 	}
 

@@ -12,7 +12,6 @@ import com.smdev.hib.BaseHibernateTest;
 public class CourseTest extends BaseHibernateTest {
 
 	private Course course = null;
-	private CourseDetails details = null;
 	private Student student = null;
 	private Subject subject = null;
 	private Teacher teacher = null;
@@ -21,7 +20,6 @@ public class CourseTest extends BaseHibernateTest {
 	@Override
 	protected void cleanUp() {
 		delete(this.course);
-		delete(this.details);
 		delete(this.subject);
 		delete(this.student);
 		delete(this.teacher);
@@ -31,8 +29,7 @@ public class CourseTest extends BaseHibernateTest {
 	public void testAddStudent() {
 		try {
 			this.subject = createSubject("EN");
-			this.details = createCourseDetails("EN_A1", "English Lvl A1");
-			this.course = createCourse(this.subject, this.details);
+			this.course = createCourse(this.subject, "English Lvl A1");
 
 			this.student = createStudent("student1");
 			this.course.addStudent(this.student);
@@ -47,8 +44,7 @@ public class CourseTest extends BaseHibernateTest {
 	public void testAddTeacher() {
 		try {
 			this.subject = createSubject("EN");
-			this.details = createCourseDetails("EN_A1", "English Lvl A1");
-			this.course = createCourse(this.subject, this.details);
+			this.course = createCourse(this.subject, "English Lvl A1");
 
 			this.teacher = createTeacher("teacher");
 			this.course.addTeacher(this.teacher);
@@ -63,8 +59,7 @@ public class CourseTest extends BaseHibernateTest {
 	public void testInsert() {
 		try {
 			this.subject = createSubject("EN");
-			this.details = createCourseDetails("EN_A1", "English Lvl A1");
-			this.course = createCourse(this.subject, this.details);
+			this.course = createCourse(this.subject, "English Lvl A1");
 			Assert.assertNotNull(this.course.getId());
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
