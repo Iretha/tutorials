@@ -21,7 +21,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import com.smdev.hib.core.DBEntity;
+import com.smdev.hib.core.DBEntry;
 
 /**
  * @author Ireth
@@ -30,7 +30,7 @@ import com.smdev.hib.core.DBEntity;
 @Entity
 @DynamicUpdate
 @Table(name = "courses", uniqueConstraints = { @UniqueConstraint(columnNames = "ID") })
-public class CourseEntity implements DBEntity {
+public class CourseEntity implements DBEntry {
 
 	/** */
 	private static final long serialVersionUID = -8686776524391627300L;

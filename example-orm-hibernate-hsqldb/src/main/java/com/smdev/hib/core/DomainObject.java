@@ -16,7 +16,7 @@ import com.smdev.hib.HibernateSessionFactory;
  *
  * @author Ireth
  */
-public abstract class DomainObject<Entity extends DBEntity> {
+public abstract class DomainObject<Entity extends DBEntry> {
 
 	/** List of fields to be skipped in toString() */
 	private static final List<String> SKIP_FIELDS = new ArrayList<>(

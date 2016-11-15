@@ -16,8 +16,10 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import com.smdev.hib.core.DBEntity;
+import com.smdev.hib.core.DBEntry;
 
 /**
  * @author Ireth
@@ -25,12 +27,13 @@ import com.smdev.hib.core.DBEntity;
 @Entity
 @DynamicUpdate
 @Table(name = "teachers", uniqueConstraints = { @UniqueConstraint(columnNames = "ID") })
-public class TeacherEntity implements DBEntity {
+public class TeacherEntity implements DBEntry {
 
 	/** */
 	private static final long serialVersionUID = -6563708678295022431L;
 
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	@JoinTable(name = "courses_teachers", joinColumns = {
 			@JoinColumn(name = "course_ID", nullable = true, updatable = true) }, inverseJoinColumns = {
 					@JoinColumn(name = "teacher_ID", nullable = true, updatable = true) })

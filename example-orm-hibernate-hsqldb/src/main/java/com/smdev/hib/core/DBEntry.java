@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author Ireth
  */
-public interface DBEntity extends Serializable {
+public interface DBEntry extends Serializable {
 	/** @return unique identifier */
 	Integer getId();
 

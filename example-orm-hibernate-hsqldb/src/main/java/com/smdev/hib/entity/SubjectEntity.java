@@ -10,7 +10,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.smdev.hib.core.DBEntity;
+import com.smdev.hib.core.DBEntry;
 
 /**
  * @author Ireth
@@ -19,7 +19,7 @@ import com.smdev.hib.core.DBEntity;
 @DynamicUpdate
 @Table(name = "subjects", uniqueConstraints = { @UniqueConstraint(columnNames = "ID"),
 		@UniqueConstraint(columnNames = "name") })
-public class SubjectEntity implements DBEntity {
+public class SubjectEntity implements DBEntry {
 
 	/** */
 	private static final long serialVersionUID = 258750302448670999L;

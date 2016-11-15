@@ -27,7 +27,7 @@ public class DomainSearch {
 	 *
 	 * @throws AppException
 	 */
-	public static <E extends DBEntity, D extends DomainObject<E>> List<D> findAll(
+	public static <E extends DBEntry, D extends DomainObject<E>> List<D> findAll(
 			Class<D> domainClz, Class<E> enityClz, Integer id) throws AppException {
 		D domainObject = null;
 		Session session = HibernateSessionFactory.getInstance().getSession();
@@ -67,7 +67,7 @@ public class DomainSearch {
 	 *
 	 * @throws AppException
 	 */
-	public static <E extends DBEntity, D extends DomainObject<E>> D findById(Class<D> domainClz,
+	public static <E extends DBEntry, D extends DomainObject<E>> D findById(Class<D> domainClz,
 			Class<E> enityClz, Integer id) throws AppException {
 		D domainObject = null;
 		Session session = HibernateSessionFactory.getInstance().getSession();
@@ -99,8 +99,9 @@ public class DomainSearch {
 	 *
 	 * @throws AppException
 	 */
-	public static <E extends DBEntity, D extends DomainObject<E>> D findLast(Class<D> domainClz,
+	public static <E extends DBEntry, D extends DomainObject<E>> D findLast(Class<D> domainClz,
 			Class<E> enityClz) throws AppException {
+		// TODO refactor -> select only last
 		D domainObject = null;
 		try {
 
