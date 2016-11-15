@@ -29,7 +29,7 @@ public class CourseTest extends BaseHibernateTest {
 	@Test
 	public void testAddTeacher() {
 		try {
-			Teacher teacher = DomainSearch.findById(Teacher.class, TeacherEntity.class, 2);
+			Teacher teacher = DomainSearch.findById(Teacher.class, TeacherEntity.class, 17);
 
 			Course course = DomainSearch.findById(Course.class, CourseEntity.class, 7);
 			course.addTeacher(teacher);

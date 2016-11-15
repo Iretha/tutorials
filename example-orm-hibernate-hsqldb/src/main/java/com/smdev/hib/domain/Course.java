@@ -18,7 +18,7 @@ public class Course extends DomainObject<CourseEntity> {
 	}
 
 	/**
-	 * Adding a student tothe course
+	 * Adding a student to the course
 	 *
 	 * @param student
 	 * @throws AppException

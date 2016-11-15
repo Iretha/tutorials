@@ -44,7 +44,10 @@ public class CourseEntity implements DBEntry {
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	/* I use "FetchType.EAGER" because lists will be small (not more than 50 entries). If you expect
+	 * a big amount of entries, better emulate the relationship with two bidirectional one-to-many
+	 * associations and manipulate the relationship from the "ManyToOne" side. */
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JoinTable(name = "courses_students", uniqueConstraints = @UniqueConstraint(columnNames = {
 			"course_ID", "student_ID" }), joinColumns = {
@@ -56,7 +59,10 @@ public class CourseEntity implements DBEntry {
 	@JoinColumn(name = "subject_ID", unique = false, nullable = false)
 	private SubjectEntity subject;
 
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	/* I use "FetchType.EAGER" because lists will be small (not more than 50 entries). If you expect
+	 * a big amount of entries, better emulate the relationship with two bidirectional one-to-many
+	 * associations and manipulate the relationship from the "ManyToOne" side. */
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JoinTable(name = "courses_teachers", uniqueConstraints = @UniqueConstraint(columnNames = {
 			"course_ID", "teacher_ID" }), joinColumns = {
