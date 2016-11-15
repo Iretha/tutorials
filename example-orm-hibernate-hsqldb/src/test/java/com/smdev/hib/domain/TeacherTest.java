@@ -13,7 +13,7 @@ public class TeacherTest extends BaseHibernateTest {
 
 	@Test
 	public void testStore() {
-		Teacher domain = createTeacher("Franco", "Brown");
+		Teacher domain = createTeacher("Franco4", "Brown4");
 		try {
 			domain.store();
 			System.out.println(domain);

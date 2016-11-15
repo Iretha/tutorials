@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import com.smdev.hib.AppException;
-import com.smdev.hib.HibernateSessionFactory;
+import com.smdev.hib.JpaFactory;
 
 /**
  * Represents a Domain Object with it's base CRUD operations.
@@ -56,11 +56,12 @@ public abstract class DomainObject<Entity extends DBEntry> {
 			throw new AppException("Entity ID missing!");
 		}
 
-		Session session = HibernateSessionFactory.getInstance().getSession();
-		Transaction tx = null;
+		EntityManager em = JpaFactory.getEntityManager();
+		EntityTransaction tx = null;
 		try {
-			tx = session.beginTransaction();
-			this.entity = (Entity) session.find(clz, id);
+			tx = em.getTransaction();
+			tx.begin();
+			this.entity = (Entity) em.find(clz, id);
 			if (this.entity == null) {
 				throw new AppException("Entity with ID=" + id + " not found!");
 			}
@@ -71,8 +72,8 @@ public abstract class DomainObject<Entity extends DBEntry> {
 			}
 			throw new AppException(e);
 		} finally {
-			if (session != null) {
-				session.close();
+			if (em.isOpen()) {
+				em.close();
 			}
 		}
 	}
@@ -83,31 +84,29 @@ public abstract class DomainObject<Entity extends DBEntry> {
 	 * @return id
 	 * @throws AppException
 	 */
-	protected void create() throws AppException {
-		Integer id = null;
-		Session session = HibernateSessionFactory.getInstance().getSession();
-		Transaction tx = null;
+	protected void insert() throws AppException {
+		EntityManager em = JpaFactory.getEntityManager();
+		EntityTransaction tx = null;
 		try {
-			tx = session.beginTransaction();
-			id = (Integer) session.save(getEntity());
+			tx = em.getTransaction();
+			tx.begin();
+			em.persist(getEntity());
 			tx.commit();
-
-			getEntity().setId(id); // not to reload the entity
 		} catch (Exception e) {
 			if (tx != null) {
 				tx.rollback();
 			}
 			throw new AppException(e);
 		} finally {
-			if (session != null) {
-				session.close();
+			if (em.isOpen()) {
+				em.close();
 			}
 		}
 	}
 
 	protected void store() throws AppException {
 		if (getEntity().getId() == null) {
-			create();
+			insert();
 		} else {
 			update();
 		}
@@ -123,11 +122,12 @@ public abstract class DomainObject<Entity extends DBEntry> {
 			throw new AppException("Entity not persisted!");
 		}
 
-		Session session = HibernateSessionFactory.getInstance().getSession();
-		Transaction tx = null;
+		EntityManager em = JpaFactory.getEntityManager();
+		EntityTransaction tx = null;
 		try {
-			tx = session.beginTransaction();
-			session.delete(getEntity());
+			tx = em.getTransaction();
+			tx.begin();
+			em.remove(getEntity());
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null) {
@@ -135,8 +135,8 @@ public abstract class DomainObject<Entity extends DBEntry> {
 			}
 			throw new AppException(e);
 		} finally {
-			if (session != null) {
-				session.close();
+			if (em.isOpen()) {
+				em.close();
 			}
 		}
 	}
@@ -202,11 +202,12 @@ public abstract class DomainObject<Entity extends DBEntry> {
 			throw new AppException("Entity not persisted!");
 		}
 
-		Session session = HibernateSessionFactory.getInstance().getSession();
-		Transaction tx = null;
+		EntityManager em = JpaFactory.getEntityManager();
+		EntityTransaction tx = null;
 		try {
-			tx = session.beginTransaction();
-			session.update(getEntity());
+			tx = em.getTransaction();
+			tx.begin();
+			em.merge(getEntity());
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null) {
@@ -214,8 +215,8 @@ public abstract class DomainObject<Entity extends DBEntry> {
 			}
 			throw new AppException(e);
 		} finally {
-			if (session != null) {
-				session.close();
+			if (em.isOpen()) {
+				em.close();
 			}
 		}
 	}

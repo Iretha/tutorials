@@ -68,13 +68,7 @@ public class BaseHibernateTest {
 	/** Initialising hibernate configuration */
 	@Before
 	public void setUp() {
-		HibernateConfigurationFactory hibConfig = new HibernateConfigurationFactory(
-				"/hibernate.cfg.xml", "/hibernate.classes.properties");
-		try {
-			hibConfig.initialize();
-		} catch (AppException e) {
-			e.printStackTrace();
-		}
+		JpaFactory.getEntityManager(); // first call does initialization
 	}
 
 	/**
@@ -82,7 +76,7 @@ public class BaseHibernateTest {
 	 */
 	@After
 	public void tearDown() {
-		HibernateSessionFactory.getInstance().shutdown();
+		JpaFactory.close(); // writes modified data to the disk
 	}
 
 }

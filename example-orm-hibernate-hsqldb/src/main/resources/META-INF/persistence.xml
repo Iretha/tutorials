@@ -2,7 +2,7 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	
+
 	<persistence-unit name="com.smdev.hib.entity"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -10,9 +10,9 @@
 		<properties>
 			<!-- Configuring JDBC properties -->
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:db/testdb1;shutdown=true" />
+			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 			<property name="javax.persistence.jdbc.user" value="SA" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 
 			<!-- Hibernate properties -->
 			<property name="hibernate.archive.autodetection" value="class,hbm" />
@@ -22,7 +22,7 @@
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 			<!-- Configuring Connection Pool -->
-			<property name="hibernate.connection.pool_size" value="10" />
+			<property name="hibernate.connection.pool_size" value="0" />
 			<property name="hibernate.connection.autocommit" value="true" />
 
 		</properties>

@@ -15,24 +15,24 @@ import com.smdev.hib.entity.TeacherEntity;
  */
 public class CourseTest extends BaseHibernateTest {
 	@Test
-	public void testAddTeacher() {
-		try {
-			Teacher teacher = DomainSearch.findById(Teacher.class, TeacherEntity.class, 2);
-
-			Course course = DomainSearch.findById(Course.class, CourseEntity.class, 7);
-			course.addTeacher(teacher);
-		} catch (AppException e) {
-			Assert.fail(e.getMessage());
-		}
-	}
-
-	@Test
 	public void testAddStudent() {
 		try {
 			Student student = DomainSearch.findById(Student.class, StudentEntity.class, 4);
 
 			Course course = DomainSearch.findById(Course.class, CourseEntity.class, 7);
 			course.addStudent(student);
+		} catch (AppException e) {
+			Assert.fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void testAddTeacher() {
+		try {
+			Teacher teacher = DomainSearch.findById(Teacher.class, TeacherEntity.class, 2);
+
+			Course course = DomainSearch.findById(Course.class, CourseEntity.class, 7);
+			course.addTeacher(teacher);
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}

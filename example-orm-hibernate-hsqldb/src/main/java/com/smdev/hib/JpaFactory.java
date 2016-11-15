@@ -8,7 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 /**
  * Singleton class that can't be instantiated directly or extended. It holds a single instance of
  * the EntityManagerFactory, that serves the entire application.
- * 
+ *
  * @author Ireth
  */
 public final class JpaFactory {
@@ -22,6 +22,13 @@ public final class JpaFactory {
 			instance = new JpaFactory();
 		}
 		return instance;
+	}
+
+	/** Closes the factory in order to HSQLDB to be persisted on the disk */
+	public static void close() {
+		if (getInstance().getEmFactory().isOpen()) {
+			getInstance().getEmFactory().close();
+		}
 	}
 
 	/** @return CriteriaBuilder */

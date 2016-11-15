@@ -4,15 +4,12 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.smdev.hib.AppException;
-import com.smdev.hib.HibernateSessionFactory;
 import com.smdev.hib.JpaFactory;
 
 /**
@@ -30,12 +27,8 @@ public class DomainSearch {
 	public static <E extends DBEntry, D extends DomainObject<E>> List<D> findAll(Class<D> domainClz,
 			Class<E> enityClz) throws AppException {
 		D domainObject = null;
-		Session session = HibernateSessionFactory.getInstance().getSession();
-		Transaction tx = null;
 		List<D> found = new ArrayList<>();
 		try {
-			tx = session.beginTransaction();
-
 			CriteriaBuilder builder = JpaFactory.getCriteriaBuilder();
 			CriteriaQuery<E> criteria = builder.createQuery(enityClz);
 			Root<E> eRoot = criteria.from(enityClz);
@@ -47,17 +40,8 @@ public class DomainSearch {
 				domainObject = constr.newInstance(entity);
 				found.add(domainObject);
 			}
-
-			tx.commit();
 		} catch (Exception e) {
-			if (tx != null) {
-				tx.rollback();
-			}
 			throw new AppException(e);
-		} finally {
-			if (session != null) {
-				session.close();
-			}
 		}
 		return found;
 	}
@@ -70,25 +54,18 @@ public class DomainSearch {
 	public static <E extends DBEntry, D extends DomainObject<E>> D findById(Class<D> domainClz,
 			Class<E> enityClz, Integer id) throws AppException {
 		D domainObject = null;
-		Session session = HibernateSessionFactory.getInstance().getSession();
-		Transaction tx = null;
+		EntityManager em = JpaFactory.getEntityManager();
 		try {
-			tx = session.beginTransaction();
-			E entity = session.find(enityClz, id);
-			tx.commit();
-
+			E entity = em.find(enityClz, id);
 			if (entity != null) {
 				Constructor<D> constr = domainClz.getConstructor(enityClz);
 				domainObject = constr.newInstance(entity);
 			}
 		} catch (Exception e) {
-			if (tx != null) {
-				tx.rollback();
-			}
 			throw new AppException(e);
 		} finally {
-			if (session != null) {
-				session.close();
+			if (em.isOpen()) {
+				em.close();
 			}
 		}
 		return domainObject;
