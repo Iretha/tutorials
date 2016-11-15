@@ -5,6 +5,8 @@ import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 
+import com.smdev.hib.core.DBEntry;
+import com.smdev.hib.core.DomainObject;
 import com.smdev.hib.domain.Course;
 import com.smdev.hib.domain.CourseDetails;
 import com.smdev.hib.domain.Student;
@@ -21,10 +23,16 @@ import com.smdev.hib.entity.TeacherEntity;
  *
  * @author Ireth
  */
-public class BaseHibernateTest {
+public abstract class BaseHibernateTest {
 
-	public Course createCourse() {
+	/**
+	 * Used for cleaning created objects
+	 */
+	protected abstract void cleanUp();
+
+	public Course createCourse(Subject subject, CourseDetails details) throws AppException {
 		Course domain = new Course(new CourseEntity());
+		domain.store(subject, details);
 		return domain;
 	}
 
@@ -38,37 +46,52 @@ public class BaseHibernateTest {
 		return domain;
 	}
 
-	public Student createStudent(String first, String last, String facNo) {
+	public Student createStudent(String name) throws AppException {
 		StudentEntity entity = new StudentEntity();
-		entity.setFirstName(first);
-		entity.setLastName(last);
-		entity.setFacultyNo(facNo);
+		entity.setFirstName(name);
+		entity.setLastName(name);
+		entity.setFacultyNo(name + 123);
 
 		Student domain = new Student(entity);
+		domain.store();
+
 		return domain;
 	}
 
-	public Subject createSubject(String name) {
+	public Subject createSubject(String name) throws AppException {
 		SubjectEntity entity = new SubjectEntity();
 		entity.setName(name);
 
 		Subject domain = new Subject(entity);
+		domain.store();
 		return domain;
 	}
 
-	public Teacher createTeacher(String first, String last) {
+	public Teacher createTeacher(String firtsLast) throws AppException {
 		TeacherEntity entity = new TeacherEntity();
-		entity.setFirstName(first);
-		entity.setLastName(last);
+		entity.setFirstName(firtsLast);
+		entity.setLastName(firtsLast);
 
 		Teacher domain = new Teacher(entity);
+		domain.store();
+
 		return domain;
+	}
+
+	public <E extends DBEntry, D extends DomainObject<E>> void delete(D domainObj) {
+		if (domainObj != null) {
+			try {
+				domainObj.delete();
+			} catch (AppException e) {
+				// already deleted
+			}
+		}
 	}
 
 	/** Initialising hibernate configuration */
 	@Before
 	public void setUp() {
-		JpaFactory.initialize("HSQLDB_persistence"); // initializes with the proper configuration
+		JpaFactory.initialize("HSQLDB_persistence");
 	}
 
 	/**
@@ -76,6 +99,8 @@ public class BaseHibernateTest {
 	 */
 	@After
 	public void tearDown() {
+		cleanUp();
+
 		JpaFactory.close(); // writes modified data to the disk
 	}
 

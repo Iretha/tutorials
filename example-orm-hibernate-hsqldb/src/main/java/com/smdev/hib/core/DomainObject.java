@@ -113,6 +113,35 @@ public abstract class DomainObject<Entity extends DBEntry> {
 	}
 
 	/**
+	 * Updates existing entry in DB
+	 *
+	 * @throws AppException
+	 */
+	protected void update() throws AppException {
+		if (getEntity().getId() == null) {
+			throw new AppException("Entity not persisted!");
+		}
+
+		EntityManager em = JpaFactory.getEntityManager();
+		EntityTransaction tx = null;
+		try {
+			tx = em.getTransaction();
+			tx.begin();
+			em.merge(getEntity());
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			throw new AppException(e);
+		} finally {
+			if (em.isOpen()) {
+				em.close();
+			}
+		}
+	}
+
+	/**
 	 * Deletes existing entry from DB
 	 *
 	 * @throws AppException
@@ -127,7 +156,7 @@ public abstract class DomainObject<Entity extends DBEntry> {
 		try {
 			tx = em.getTransaction();
 			tx.begin();
-			em.remove(getEntity());
+			em.remove(em.getReference(getEntity().getClass(), getEntity().getId())); // if detached
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null) {
@@ -190,35 +219,6 @@ public abstract class DomainObject<Entity extends DBEntry> {
 			}
 		}
 		return b.append("]").toString();
-	}
-
-	/**
-	 * Updates existing entry in DB
-	 *
-	 * @throws AppException
-	 */
-	public void update() throws AppException {
-		if (getEntity().getId() == null) {
-			throw new AppException("Entity not persisted!");
-		}
-
-		EntityManager em = JpaFactory.getEntityManager();
-		EntityTransaction tx = null;
-		try {
-			tx = em.getTransaction();
-			tx.begin();
-			em.merge(getEntity());
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-			throw new AppException(e);
-		} finally {
-			if (em.isOpen()) {
-				em.close();
-			}
-		}
 	}
 
 }

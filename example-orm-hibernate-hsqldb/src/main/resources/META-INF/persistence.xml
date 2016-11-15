@@ -23,7 +23,7 @@
 
 			<!-- Configuring Connection Pool -->
 			<property name="hibernate.connection.pool_size" value="10" />
-			<property name="hibernate.connection.autocommit" value="true" />
+			<property name="hibernate.connection.autocommit" value="false" />
 
 		</properties>
 	</persistence-unit>

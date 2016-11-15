@@ -1,5 +1,6 @@
 package com.smdev.hib.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -48,12 +49,12 @@ public class CourseEntity implements DBEntry {
 	 * a big amount of entries, better emulate the relationship with two bidirectional one-to-many
 	 * associations and manipulate the relationship from the "ManyToOne" side. */
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+	// @Fetch(value = FetchMode.SUBSELECT)
 	@JoinTable(name = "courses_students", uniqueConstraints = @UniqueConstraint(columnNames = {
 			"course_ID", "student_ID" }), joinColumns = {
 					@JoinColumn(name = "course_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 							@JoinColumn(name = "student_ID", nullable = false, updatable = false) })
-	private List<StudentEntity> students;
+	private List<StudentEntity> students = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "subject_ID", unique = false, nullable = false)
@@ -68,7 +69,7 @@ public class CourseEntity implements DBEntry {
 			"course_ID", "teacher_ID" }), joinColumns = {
 					@JoinColumn(name = "course_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 							@JoinColumn(name = "teacher_ID", nullable = false, updatable = false) })
-	private List<TeacherEntity> teachers;
+	private List<TeacherEntity> teachers = new ArrayList<>();
 
 	/**
 	 * @return the details

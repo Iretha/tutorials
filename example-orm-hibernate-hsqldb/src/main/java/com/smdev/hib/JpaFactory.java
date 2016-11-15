@@ -27,11 +27,15 @@ public final class JpaFactory {
 		return instance;
 	}
 
-	/** Closes the factory in order to HSQLDB to be persisted on the disk */
+	/**
+	 * Closes the factory in order to HSQLDB to be persisted on the disk. Once closed, factory
+	 * should be re-initialised for further usage.
+	 */
 	public static void close() {
 		if (getInstance().getEmFactory().isOpen()) {
 			getInstance().getEmFactory().close();
 		}
+		emFactory = null;
 	}
 
 	/** @return CriteriaBuilder */

@@ -10,12 +10,19 @@ import com.smdev.hib.BaseHibernateTest;
  * @author Ireth
  */
 public class StudentTest extends BaseHibernateTest {
+	private Student student = null;
+
+	/* @see com.smdev.hib.BaseHibernateTest#cleanUp() */
+	@Override
+	protected void cleanUp() {
+		delete(this.student);
+	}
+
 	@Test
-	public void testStore() {
-		Student domain = createStudent("Tom1", "Miller1", "123Tom1Miller1");
+	public void testInsert() {
 		try {
-			domain.store();
-			System.out.println(domain);
+			this.student = createStudent("Tom1");
+			Assert.assertNotNull(this.student.getId());
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}

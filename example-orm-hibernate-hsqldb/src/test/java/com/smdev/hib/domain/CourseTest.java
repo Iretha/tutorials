@@ -5,22 +5,39 @@ import org.junit.Test;
 
 import com.smdev.hib.AppException;
 import com.smdev.hib.BaseHibernateTest;
-import com.smdev.hib.core.DomainSearch;
-import com.smdev.hib.entity.CourseEntity;
-import com.smdev.hib.entity.StudentEntity;
-import com.smdev.hib.entity.TeacherEntity;
 
 /**
  * @author Ireth
  */
 public class CourseTest extends BaseHibernateTest {
+
+	private Course course = null;
+	private CourseDetails details = null;
+	private Student student = null;
+	private Subject subject = null;
+	private Teacher teacher = null;
+
+	/* @see com.smdev.hib.BaseHibernateTest#cleanUp() */
+	@Override
+	protected void cleanUp() {
+		delete(this.course);
+		delete(this.details);
+		delete(this.subject);
+		delete(this.student);
+		delete(this.teacher);
+	}
+
 	@Test
 	public void testAddStudent() {
 		try {
-			Student student = DomainSearch.findById(Student.class, StudentEntity.class, 4);
+			this.subject = createSubject("EN");
+			this.details = createCourseDetails("EN_A1", "English Lvl A1");
+			this.course = createCourse(this.subject, this.details);
 
-			Course course = DomainSearch.findById(Course.class, CourseEntity.class, 7);
-			course.addStudent(student);
+			this.student = createStudent("student1");
+			this.course.addStudent(this.student);
+
+			// TODO verify
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
@@ -29,25 +46,29 @@ public class CourseTest extends BaseHibernateTest {
 	@Test
 	public void testAddTeacher() {
 		try {
-			Teacher teacher = DomainSearch.findById(Teacher.class, TeacherEntity.class, 17);
+			this.subject = createSubject("EN");
+			this.details = createCourseDetails("EN_A1", "English Lvl A1");
+			this.course = createCourse(this.subject, this.details);
 
-			Course course = DomainSearch.findById(Course.class, CourseEntity.class, 7);
-			course.addTeacher(teacher);
+			this.teacher = createTeacher("teacher");
+			this.course.addTeacher(this.teacher);
+
+			// TODO verify
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void testStore() {
-		Subject subject = createSubject("EN");
-		CourseDetails details = createCourseDetails("EN_A1", "English Lvl A1");
-		Course domain = createCourse();
+	public void testInsert() {
 		try {
-			domain.store(subject, details);
-			System.out.println(domain);
+			this.subject = createSubject("EN");
+			this.details = createCourseDetails("EN_A1", "English Lvl A1");
+			this.course = createCourse(this.subject, this.details);
+			Assert.assertNotNull(this.course.getId());
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
 	}
+
 }

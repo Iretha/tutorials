@@ -11,12 +11,19 @@ import com.smdev.hib.BaseHibernateTest;
  */
 public class SubjectTest extends BaseHibernateTest {
 
+	private Subject subject = null;
+
+	/* @see com.smdev.hib.BaseHibernateTest#cleanUp() */
+	@Override
+	protected void cleanUp() {
+		delete(this.subject);
+	}
+
 	@Test
-	public void testStore() {
-		Subject domain = createSubject("English");
+	public void testInsert() {
 		try {
-			domain.store();
-			System.out.println(domain);
+			this.subject = createSubject("English");
+			Assert.assertNotNull(this.subject.getId());
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}

@@ -17,6 +17,13 @@ import com.smdev.hib.entity.TeacherEntity;
  */
 public class DomainSearchTest extends BaseHibernateTest {
 
+	/* @see com.smdev.hib.BaseHibernateTest#cleanUp() */
+	@Override
+	protected void cleanUp() {
+		// TODO Auto-generated method stub
+
+	}
+
 	@Test
 	public void testFindAll() {
 		try {
