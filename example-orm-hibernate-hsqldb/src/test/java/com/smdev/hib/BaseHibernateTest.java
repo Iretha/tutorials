@@ -68,7 +68,7 @@ public class BaseHibernateTest {
 	/** Initialising hibernate configuration */
 	@Before
 	public void setUp() {
-		JpaFactory.getEntityManager(); // first call does initialization
+		JpaFactory.initialize("com.smdev.hib.entity"); // initializes with the proper configuration
 	}
 
 	/**

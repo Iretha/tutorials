@@ -13,6 +13,9 @@ import javax.persistence.criteria.CriteriaBuilder;
  */
 public final class JpaFactory {
 
+	/** Single instance of EntityManagerFactory */
+	private static EntityManagerFactory emFactory;
+
 	/** Single instance of the class */
 	private static JpaFactory instance;
 
@@ -41,16 +44,23 @@ public final class JpaFactory {
 		return getInstance().getEmFactory().createEntityManager();
 	}
 
-	private final EntityManagerFactory emFactory;
+	public static void initialize(String persistenceName) {
+		if (emFactory != null) {
+			throw new RuntimeException("JpaFactory already initialized!");
+		}
+		emFactory = Persistence.createEntityManagerFactory(persistenceName);
+	}
 
 	/** Hidden constructor */
 	private JpaFactory() {
 		super();
-		this.emFactory = Persistence.createEntityManagerFactory("com.smdev.hib.entity");
 	}
 
 	/** @return the emFactory */
 	private EntityManagerFactory getEmFactory() {
-		return this.emFactory;
+		if (emFactory == null) {
+			throw new RuntimeException("JpaFactory not initialized!");
+		}
+		return emFactory;
 	}
 }
