@@ -68,7 +68,7 @@ public class BaseHibernateTest {
 	/** Initialising hibernate configuration */
 	@Before
 	public void setUp() {
-		JpaFactory.initialize("com.smdev.hib.entity"); // initializes with the proper configuration
+		JpaFactory.initialize("HSQLDB_persistence"); // initializes with the proper configuration
 	}
 
 	/**
