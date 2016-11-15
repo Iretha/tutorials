@@ -13,7 +13,7 @@ import org.hibernate.Transaction;
 
 import com.smdev.hib.AppException;
 import com.smdev.hib.HibernateSessionFactory;
-import com.smdev.hib.util.HibernateUtil;
+import com.smdev.hib.JpaFactory;
 
 /**
  * Services for retrieving entries from DB.
@@ -27,8 +27,8 @@ public class DomainSearch {
 	 *
 	 * @throws AppException
 	 */
-	public static <E extends DBEntry, D extends DomainObject<E>> List<D> findAll(
-			Class<D> domainClz, Class<E> enityClz, Integer id) throws AppException {
+	public static <E extends DBEntry, D extends DomainObject<E>> List<D> findAll(Class<D> domainClz,
+			Class<E> enityClz) throws AppException {
 		D domainObject = null;
 		Session session = HibernateSessionFactory.getInstance().getSession();
 		Transaction tx = null;
@@ -36,12 +36,12 @@ public class DomainSearch {
 		try {
 			tx = session.beginTransaction();
 
-			CriteriaBuilder builder = HibernateUtil.getCriteriaBuilder();
+			CriteriaBuilder builder = JpaFactory.getCriteriaBuilder();
 			CriteriaQuery<E> criteria = builder.createQuery(enityClz);
 			Root<E> eRoot = criteria.from(enityClz);
 			criteria.select(eRoot);
 
-			List<E> list = HibernateUtil.getEntityManager().createQuery(criteria).getResultList();
+			List<E> list = JpaFactory.getEntityManager().createQuery(criteria).getResultList();
 			Constructor<D> constr = domainClz.getConstructor(enityClz);
 			for (E entity : list) {
 				domainObject = constr.newInstance(entity);
@@ -105,13 +105,13 @@ public class DomainSearch {
 		D domainObject = null;
 		try {
 
-			CriteriaBuilder builder = HibernateUtil.getCriteriaBuilder();
+			CriteriaBuilder builder = JpaFactory.getCriteriaBuilder();
 			CriteriaQuery<E> criteria = builder.createQuery(enityClz);
 
 			Root<E> eRoot = criteria.from(enityClz);
 			criteria.select(eRoot);
 
-			List<E> list = HibernateUtil.getEntityManager().createQuery(criteria).getResultList();
+			List<E> list = JpaFactory.getEntityManager().createQuery(criteria).getResultList();
 			Constructor<D> constr = domainClz.getConstructor(enityClz);
 			for (E entity : list) {
 				domainObject = constr.newInstance(entity);
