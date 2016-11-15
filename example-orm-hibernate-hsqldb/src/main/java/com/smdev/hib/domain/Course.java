@@ -41,7 +41,6 @@ public class Course extends DomainObject<CourseEntity> {
 
 	/* @see com.smdev.hib.core.DomainObject#create() */
 	public void store(Subject subject, CourseDetails details) throws AppException {
-		subject.store();
 		getEntity().setSubject(subject.getEntity());
 
 		details.store();

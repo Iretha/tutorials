@@ -36,7 +36,7 @@ public class CourseEntity implements DBEntry {
 	/** */
 	private static final long serialVersionUID = -8686776524391627300L;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "details_ID", unique = true, nullable = false)
 	private CourseDetailsEntity details;
 
