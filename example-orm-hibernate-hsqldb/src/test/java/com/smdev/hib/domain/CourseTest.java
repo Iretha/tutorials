@@ -34,7 +34,8 @@ public class CourseTest extends BaseHibernateTest {
 			this.student = createStudent("student1");
 			this.course.addStudent(this.student);
 
-			// TODO verify
+			this.course = new Course(this.course.getId()); // reload from db
+			Assert.assertTrue(this.course.getEntity().getStudents().size() == 1);
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
@@ -49,7 +50,8 @@ public class CourseTest extends BaseHibernateTest {
 			this.teacher = createTeacher("teacher");
 			this.course.addTeacher(this.teacher);
 
-			// TODO verify
+			this.course = new Course(this.course.getId()); // reload from db
+			Assert.assertTrue(this.course.getEntity().getTeachers().size() == 1);
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
