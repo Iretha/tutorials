@@ -75,6 +75,7 @@ public abstract class BaseHibernateTest {
 		return domain;
 	}
 
+	@SuppressWarnings(value = { "all" })
 	public <E extends DBEntry, D extends DomainObject<E>> void delete(D domainObj) {
 		if (domainObj != null) {
 			try {
@@ -82,6 +83,7 @@ public abstract class BaseHibernateTest {
 			} catch (AppException e) {
 				// already deleted
 			}
+			domainObj = null; // Not a good practice! :)
 		}
 	}
 
