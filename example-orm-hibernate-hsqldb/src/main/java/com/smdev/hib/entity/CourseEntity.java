@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.smdev.hib.core.DBEntity;
 
@@ -42,20 +44,24 @@ public class CourseEntity implements DBEntity {
 	@Column(name = "ID", unique = true, nullable = false)
 	private Integer id;
 
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinTable(name = "courses_students", joinColumns = {
-			@JoinColumn(name = "course_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "student_ID", nullable = false, updatable = false) })
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	@JoinTable(name = "courses_students", uniqueConstraints = @UniqueConstraint(columnNames = {
+			"course_ID", "student_ID" }), joinColumns = {
+					@JoinColumn(name = "course_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
+							@JoinColumn(name = "student_ID", nullable = false, updatable = false) })
 	private List<StudentEntity> students;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "subject_ID", unique = false, nullable = false)
 	private SubjectEntity subject;
 
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinTable(name = "courses_teachers", joinColumns = {
-			@JoinColumn(name = "course_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "teacher_ID", nullable = false, updatable = false) })
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	@JoinTable(name = "courses_teachers", uniqueConstraints = @UniqueConstraint(columnNames = {
+			"course_ID", "teacher_ID" }), joinColumns = {
+					@JoinColumn(name = "course_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
+							@JoinColumn(name = "teacher_ID", nullable = false, updatable = false) })
 	private List<TeacherEntity> teachers;
 
 	/**

@@ -1,6 +1,9 @@
 package com.smdev.hib.core;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,10 +13,14 @@ import com.smdev.hib.HibernateSessionFactory;
 
 /**
  * Represents a Domain Object with it's base CRUD operations.
- * 
+ *
  * @author Ireth
  */
 public abstract class DomainObject<Entity extends DBEntity> {
+
+	/** List of fields to be skipped in toString() */
+	private static final List<String> SKIP_FIELDS = new ArrayList<>(
+			Arrays.asList("serialVersionUID"));
 
 	/** Hibernate entity */
 	private Entity entity;
@@ -76,7 +83,7 @@ public abstract class DomainObject<Entity extends DBEntity> {
 	 * @return id
 	 * @throws AppException
 	 */
-	protected Integer create() throws AppException {
+	protected void create() throws AppException {
 		Integer id = null;
 		Session session = HibernateSessionFactory.getInstance().getSession();
 		Transaction tx = null;
@@ -96,7 +103,14 @@ public abstract class DomainObject<Entity extends DBEntity> {
 				session.close();
 			}
 		}
-		return id;
+	}
+
+	protected void store() throws AppException {
+		if (getEntity().getId() == null) {
+			create();
+		} else {
+			update();
+		}
 	}
 
 	/**
@@ -159,16 +173,19 @@ public abstract class DomainObject<Entity extends DBEntity> {
 		b.append("[").append(this.entity.getClass().getSimpleName()).append(":");
 		Field[] fields = null;
 		Object fieldValue = null;
+		String fName = null;
 		for (Class<?> clz = this.entity.getClass(); clz != null; clz = clz.getSuperclass()) {
 			fields = clz.getDeclaredFields();
 			for (Field field : fields) {
-				field.setAccessible(true);
-				try {
-					fieldValue = field.get(this.entity);
-					b.append(" ").append(field.getName()).append("=").append(fieldValue)
-							.append(";");
-				} catch (Exception e) {
-					// not important here
+				fName = field.getName();
+				if (!SKIP_FIELDS.contains(fName)) {
+					field.setAccessible(true);
+					try {
+						fieldValue = field.get(this.entity);
+						b.append(" ").append(fName).append("=").append(fieldValue).append(";");
+					} catch (Exception e) {
+						// not important here
+					}
 				}
 			}
 		}

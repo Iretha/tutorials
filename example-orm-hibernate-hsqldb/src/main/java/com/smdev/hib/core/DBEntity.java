@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Represents an entity with an ID column.
- * 
+ *
  * @author Ireth
  */
 public interface DBEntity extends Serializable {

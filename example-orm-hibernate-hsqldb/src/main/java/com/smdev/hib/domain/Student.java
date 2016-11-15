@@ -19,8 +19,8 @@ public class Student extends DomainObject<StudentEntity> {
 
 	/* @see com.smdev.hib.core.CrudObject#create() */
 	@Override
-	public Integer create() throws AppException {
-		return super.create();
+	public void store() throws AppException {
+		super.store();
 	}
 
 }

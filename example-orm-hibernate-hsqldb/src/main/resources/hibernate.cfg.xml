@@ -12,8 +12,8 @@
 		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.connection.pool_size">10</property>
 		<property name="hibernate.connection.autocommit">true</property>
-		<property name="hibernate.connection.url">jdbc:hsqldb:file:db/testdb;shutdown=true</property>
-		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+		<property name="hibernate.connection.url">jdbc:hsqldb:file:db/testdb1;shutdown=true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 	</session-factory>
 
 </hibernate-configuration>

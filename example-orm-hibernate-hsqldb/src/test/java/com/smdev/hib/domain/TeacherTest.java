@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import com.smdev.hib.AppException;
 import com.smdev.hib.BaseHibernateTest;
-import com.smdev.hib.entity.TeacherEntity;
 
 /**
  * @author Ireth
@@ -13,14 +12,11 @@ import com.smdev.hib.entity.TeacherEntity;
 public class TeacherTest extends BaseHibernateTest {
 
 	@Test
-	public void testCreate() {
-		TeacherEntity entity = new TeacherEntity();
-		entity.setFirstName("Franco");
-		entity.setLastName("Brown");
-
-		Teacher domain = new Teacher(entity);
+	public void testStore() {
+		Teacher domain = createTeacher("Franco", "Brown");
 		try {
-			domain.create();
+			domain.store();
+			System.out.println(domain);
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}

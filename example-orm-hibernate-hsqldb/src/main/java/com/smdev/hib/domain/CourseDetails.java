@@ -19,7 +19,7 @@ public class CourseDetails extends DomainObject<CourseDetailsEntity> {
 
 	/* @see com.smdev.hib.core.CrudObject#create() */
 	@Override
-	public Integer create() throws AppException {
-		return super.create();
+	public void store() throws AppException {
+		super.store();
 	}
 }

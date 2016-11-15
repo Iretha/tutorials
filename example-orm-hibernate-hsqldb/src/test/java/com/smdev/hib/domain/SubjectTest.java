@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import com.smdev.hib.AppException;
 import com.smdev.hib.BaseHibernateTest;
-import com.smdev.hib.entity.SubjectEntity;
 
 /**
  * @author Ireth
@@ -13,13 +12,11 @@ import com.smdev.hib.entity.SubjectEntity;
 public class SubjectTest extends BaseHibernateTest {
 
 	@Test
-	public void testCreate() {
-		SubjectEntity entity = new SubjectEntity();
-		entity.setName("English");
-
-		Subject domain = new Subject(entity);
+	public void testStore() {
+		Subject domain = createSubject("English");
 		try {
-			domain.create();
+			domain.store();
+			System.out.println(domain);
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}

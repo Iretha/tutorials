@@ -17,14 +17,36 @@ public class Course extends DomainObject<CourseEntity> {
 		super(CourseEntity.class, id);
 	}
 
-	/* @see com.smdev.hib.core.CrudObject#create() */
-	public Integer create(Subject subject, CourseDetails details) throws AppException {
-		subject.create();
-		details.create();
+	/**
+	 * Adds a teacher
+	 *
+	 * @param teacher
+	 * @throws AppException
+	 */
+	public void addTeacher(Teacher teacher) throws AppException {
+		getEntity().getTeachers().add(teacher.getEntity());
+		super.store();
+	}
 
+	/**
+	 * Sign up for a course
+	 *
+	 * @param student
+	 * @throws AppException
+	 */
+	public void signup(Student student) throws AppException {
+		getEntity().getStudents().add(student.getEntity());
+		super.store();
+	}
+
+	/* @see com.smdev.hib.core.DomainObject#create() */
+	public void store(Subject subject, CourseDetails details) throws AppException {
+		subject.store();
 		getEntity().setSubject(subject.getEntity());
+
+		details.store();
 		getEntity().setDetails(details.getEntity());
 
-		return super.create();
+		super.store();
 	}
 }

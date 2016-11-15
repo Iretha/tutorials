@@ -5,22 +5,17 @@ import org.junit.Test;
 
 import com.smdev.hib.AppException;
 import com.smdev.hib.BaseHibernateTest;
-import com.smdev.hib.entity.StudentEntity;
 
 /**
  * @author Ireth
  */
 public class StudentTest extends BaseHibernateTest {
 	@Test
-	public void testCreate() {
-		StudentEntity entity = new StudentEntity();
-		entity.setFirstName("Tom");
-		entity.setLastName("Miller");
-		entity.setFacultyNo("123TomMiller");
-
-		Student domain = new Student(entity);
+	public void testStore() {
+		Student domain = createStudent("Tom", "Miller", "123TomMiller");
 		try {
-			domain.create();
+			domain.store();
+			System.out.println(domain);
 		} catch (AppException e) {
 			Assert.fail(e.getMessage());
 		}
