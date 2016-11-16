@@ -56,7 +56,7 @@ public class CourseEntity implements DBEntry {
 							@JoinColumn(name = "student_ID", nullable = false, updatable = false) })
 	private List<StudentEntity> students = new ArrayList<>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "subject_ID", unique = false, nullable = false)
 	private SubjectEntity subject;
 

@@ -40,6 +40,18 @@ public class Course extends DomainObject<CourseEntity> {
 	}
 
 	/**
+	 * Changing the course subject
+	 *
+	 * @param subject
+	 * @throws AppException
+	 */
+	public void changeSubject(Subject subject) throws AppException {
+		getEntity().setSubject(subject.getEntity());
+
+		super.store();
+	}
+
+	/**
 	 * Removing a student from the course
 	 *
 	 * @param idx
