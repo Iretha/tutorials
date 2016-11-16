@@ -68,4 +68,44 @@ public class CourseTest extends BaseHibernateTest {
 		}
 	}
 
+	@Test
+	public void testRemoveStudent() {
+		try {
+			this.subject = createSubject("EN");
+			this.course = createCourse(this.subject, "English Lvl A1");
+
+			this.student = createStudent("student1");
+			this.course.addStudent(this.student);
+
+			this.course = new Course(this.course.getId()); // reload from db
+			Assert.assertTrue(this.course.getEntity().getStudents().size() == 1);
+
+			this.course.removeStudent(0);
+			this.course = new Course(this.course.getId()); // reload from db
+			Assert.assertTrue(this.course.getEntity().getStudents().size() == 0);
+		} catch (AppException e) {
+			Assert.fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void testRemoveTeacher() {
+		try {
+			this.subject = createSubject("EN");
+			this.course = createCourse(this.subject, "English Lvl A1");
+
+			this.teacher = createTeacher("teacher");
+			this.course.addTeacher(this.teacher);
+
+			this.course = new Course(this.course.getId()); // reload from db
+			Assert.assertTrue(this.course.getEntity().getTeachers().size() == 1);
+
+			this.course.removeTeacher(0);
+			this.course = new Course(this.course.getId()); // reload from db
+			Assert.assertTrue(this.course.getEntity().getTeachers().size() == 0);
+		} catch (AppException e) {
+			Assert.fail(e.getMessage());
+		}
+	}
+
 }

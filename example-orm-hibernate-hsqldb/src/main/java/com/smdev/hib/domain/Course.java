@@ -39,6 +39,28 @@ public class Course extends DomainObject<CourseEntity> {
 		super.store();
 	}
 
+	/**
+	 * Removing a student from the course
+	 *
+	 * @param idx
+	 * @throws AppException
+	 */
+	public void removeStudent(int idx) throws AppException {
+		getEntity().getStudents().remove(idx);
+		super.store();
+	}
+
+	/**
+	 * Removes a teacher from the course
+	 *
+	 * @param idx
+	 * @throws AppException
+	 */
+	public void removeTeacher(int idx) throws AppException {
+		getEntity().getTeachers().remove(idx);
+		super.store();
+	}
+
 	/* @see com.smdev.hib.core.DomainObject#create() */
 	public void store(Subject subject, CourseDetails details) throws AppException {
 		getEntity().setSubject(subject.getEntity());
