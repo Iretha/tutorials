@@ -17,3 +17,7 @@ Examples of different Java related technologies
 - **ORM** (Object-Relational Mapping)
 
 > - [**example-orm-hibernate-hsqldb**](https://github.com/Iretha/tutorials/tree/master/example-orm-hibernate-hsqldb) - Example project with [Maven](https://maven.apache.org/), [Hibernate](http://hibernate.org/), [HyperSQL aka HSQLDB](http://hsqldb.org/)
+
+- **JSF** (Java Server Faces)
+
+> - [**example-jsf-primefaces**](https://github.com/Iretha/tutorials/tree/master/example-jsf-primefaces) - Example project with [Maven](https://maven.apache.org/), [Hibernate](http://hibernate.org/), [HyperSQL aka HSQLDB](http://hsqldb.org/), [JSF Mojarra 2.2.13](https://javaserverfaces.java.net/2.2/download.html), [Primefaces 6.0](http://www.primefaces.org/showcase/), [Facelets](https://en.wikipedia.org/wiki/Facelets), [Apache Tomcat 8.5](http://tomcat.apache.org/whichversion.html)
