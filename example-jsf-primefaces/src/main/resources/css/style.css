@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+
+.title {
+	font-size: 30pt;
+	font-family: sans-serif;
+	color: #D8D8D8;
+	font-weight: bold;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.required {
+	color: red;
+	font-weight: bold;
+}
+
+.row-odd {
+	background-color: #FBFBFB !important;
+	text-align: right !important;
+	border-color: white !important;
+	padding-right: 0px !important;
+	margin-right: 0px !important;
+}
+
+.row-even {
+	background-color: #EEF9FE !important;
+	text-align: right !important;
+	border-color: white !important;
+	padding-right: 0px !important;
+	margin-right: 0px !important;
+}
+
+
+.info {
+	font-size: x-small !important;
+	font-weight: normal !important;
+	color: #656565 !important;
+}
+
+.info-style-bold {
+	font-weight: bold;
+	background-color: #C0E0C0;
+}
+
+.warning-style-bold {
+	font-weight: bold;
+	background-color: #FAE6B0;
+}
+
+.help-style-bold {
+	font-weight: bold;
+	color: #4285F4;
+}
+
+.label {
+	color: #F69127;
+	font-size: large;
+}
+

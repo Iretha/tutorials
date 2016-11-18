@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+body {
+	font-family: Verdana, Arial, sans-serif;
+}
+
+#header {
+	background-image: url("#{resource['images/header_repeat.png']}");
+	background-repeat: repeat-x;
+	width: 100%;
+}
+
+#footer {
+	background-image: url("#{resource['images/footer_line.PNG']}");
+	background-repeat: repeat-x;
+	width: 100%;
+	font-size: small;
+	font-style: italic;
+	vertical-align: top;
+	text-align: center;
+}
+
+.page-label {
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-color: #4285F4;
+	font-size: medium;
+}
+
+#page-content {
+	text-align: left;
+}
+
+#page-menu {
+	text-align: left;
+}
+
+#language-bar {
+	
+}
+
+::-ms-clear {
+	 display: none;
+}

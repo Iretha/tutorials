@@ -1,8 +1,20 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
-<h:head></h:head>
-<h:body>
-	<h:outputText value="Aaa"></h:outputText>
-</h:body>
-</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="page-title">#{msg.home}</ui:define>
+	<ui:define name="page-label">#{msg.home}</ui:define>
+	<ui:define name="page-content">
+		<h:outputText value="Home"></h:outputText>
+
+		<p:panelGrid columns="2">
+			<f:facet name="header"> Panel Header</f:facet>
+			<p:calendar></p:calendar>
+			<p:button></p:button>
+		</p:panelGrid>
+	</ui:define>
+</ui:composition>
