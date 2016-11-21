@@ -148,7 +148,7 @@
 			<artifactId>example-orm-hibernate-hsqldb</artifactId>
 			<version>0.0.1</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/sm4j-exc-0.0.1.jar</systemPath>
+			<systemPath>${project.basedir}/lib/example-orm-hibernate-hsqldb-0.0.1.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
